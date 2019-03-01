@@ -8,22 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		8451DDC42229C75900558BBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDC32229C75900558BBF /* AppDelegate.swift */; };
-		8451DDC62229C75900558BBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDC52229C75900558BBF /* ViewController.swift */; };
-		8451DDC92229C75900558BBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8451DDC72229C75900558BBF /* Main.storyboard */; };
 		8451DDCC2229C75900558BBF /* Fractality.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDCA2229C75900558BBF /* Fractality.xcdatamodeld */; };
 		8451DDCE2229C75900558BBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451DDCD2229C75900558BBF /* Assets.xcassets */; };
 		8451DDD12229C75900558BBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8451DDCF2229C75900558BBF /* LaunchScreen.storyboard */; };
+		8451DDD92229C8C100558BBF /* NodesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDD82229C8C100558BBF /* NodesCollectionViewController.swift */; };
+		8451DDDE2229CA7100558BBF /* NodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDDD2229CA7100558BBF /* NodeCollectionViewCell.swift */; };
+		8451DDE12229CBE300558BBF /* UIColor+Fractality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDE02229CBE300558BBF /* UIColor+Fractality.swift */; };
+		8451DDE32229D21100558BBF /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDE22229D21100558BBF /* Node.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8451DDC02229C75900558BBF /* Fractality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fractality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8451DDC32229C75900558BBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8451DDC52229C75900558BBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8451DDC82229C75900558BBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8451DDCB2229C75900558BBF /* Fractality.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fractality.xcdatamodel; sourceTree = "<group>"; };
 		8451DDCD2229C75900558BBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8451DDD02229C75900558BBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8451DDD22229C75900558BBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8451DDD82229C8C100558BBF /* NodesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesCollectionViewController.swift; sourceTree = "<group>"; };
+		8451DDDD2229CA7100558BBF /* NodeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCollectionViewCell.swift; sourceTree = "<group>"; };
+		8451DDE02229CBE300558BBF /* UIColor+Fractality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Fractality.swift"; sourceTree = "<group>"; };
+		8451DDE22229D21100558BBF /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,49 @@
 		8451DDC22229C75900558BBF /* Fractality */ = {
 			isa = PBXGroup;
 			children = (
+				8451DDDC2229C8D800558BBF /* Models */,
+				8451DDDB2229C8D300558BBF /* Views */,
+				8451DDDA2229C8C700558BBF /* ViewControllers */,
 				8451DDC32229C75900558BBF /* AppDelegate.swift */,
-				8451DDC52229C75900558BBF /* ViewController.swift */,
-				8451DDC72229C75900558BBF /* Main.storyboard */,
+				8451DDDF2229CBCA00558BBF /* Extensions */,
 				8451DDCD2229C75900558BBF /* Assets.xcassets */,
 				8451DDCF2229C75900558BBF /* LaunchScreen.storyboard */,
 				8451DDD22229C75900558BBF /* Info.plist */,
 				8451DDCA2229C75900558BBF /* Fractality.xcdatamodeld */,
 			);
 			path = Fractality;
+			sourceTree = "<group>";
+		};
+		8451DDDA2229C8C700558BBF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8451DDD82229C8C100558BBF /* NodesCollectionViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8451DDDB2229C8D300558BBF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8451DDDD2229CA7100558BBF /* NodeCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8451DDDC2229C8D800558BBF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8451DDE22229D21100558BBF /* Node.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8451DDDF2229CBCA00558BBF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8451DDE02229CBE300558BBF /* UIColor+Fractality.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +165,6 @@
 			files = (
 				8451DDD12229C75900558BBF /* LaunchScreen.storyboard in Resources */,
 				8451DDCE2229C75900558BBF /* Assets.xcassets in Resources */,
-				8451DDC92229C75900558BBF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +175,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8451DDE12229CBE300558BBF /* UIColor+Fractality.swift in Sources */,
+				8451DDDE2229CA7100558BBF /* NodeCollectionViewCell.swift in Sources */,
 				8451DDCC2229C75900558BBF /* Fractality.xcdatamodeld in Sources */,
-				8451DDC62229C75900558BBF /* ViewController.swift in Sources */,
+				8451DDE32229D21100558BBF /* Node.swift in Sources */,
 				8451DDC42229C75900558BBF /* AppDelegate.swift in Sources */,
+				8451DDD92229C8C100558BBF /* NodesCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8451DDC72229C75900558BBF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8451DDC82229C75900558BBF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8451DDCF2229C75900558BBF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
