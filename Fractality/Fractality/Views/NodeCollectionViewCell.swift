@@ -32,6 +32,7 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		let stv = UIStackView()
 		stv.axis = .vertical
 		stv.distribution = .equalSpacing
+		stv.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 		stv.translatesAutoresizingMaskIntoConstraints = false
 		return stv
 	}()
@@ -39,6 +40,8 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		let lbl = UILabel()
 		lbl.textColor = .softRed
 		lbl.font = .systemFont(ofSize: 12, weight: .regular)
+		lbl.textAlignment = .right
+		lbl.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 		lbl.translatesAutoresizingMaskIntoConstraints = false
 		return lbl
 	}()
@@ -46,6 +49,8 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		let lbl = UILabel()
 		lbl.textColor = .limeGreen
 		lbl.font = .systemFont(ofSize: 12, weight: .regular)
+		lbl.textAlignment = .right
+		lbl.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 		lbl.translatesAutoresizingMaskIntoConstraints = false
 		return lbl
 	}()
@@ -53,6 +58,8 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		let lbl = UILabel()
 		lbl.textColor = .brightBlue
 		lbl.font = .systemFont(ofSize: 12, weight: .regular)
+		lbl.textAlignment = .right
+		lbl.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 		lbl.translatesAutoresizingMaskIntoConstraints = false
 		return lbl
 	}()
@@ -69,7 +76,20 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		stvCoords.addArrangedSubview(lblCoordY)
 		stvCoords.addArrangedSubview(lblCoordZ)
 		
-		
+		NSLayoutConstraint.activate([
+			vCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
+			vCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
+			vCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
+			vCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset),
+			
+			lblNumber.leadingAnchor.constraint(equalTo: vCell.leadingAnchor, constant: 16),
+			lblNumber.centerYAnchor.constraint(equalTo: vCell.centerYAnchor),
+			
+			stvCoords.leadingAnchor.constraint(equalTo: lblNumber.trailingAnchor, constant: 4),
+			stvCoords.trailingAnchor.constraint(equalTo: vCell.trailingAnchor, constant: -12),
+			stvCoords.topAnchor.constraint(equalTo: vCell.topAnchor, constant: 16),
+			stvCoords.bottomAnchor.constraint(equalTo: vCell.bottomAnchor, constant: -16)
+		])		
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -85,8 +105,15 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		lblCoordZ.text = nil
 	}
 	
-	private func createUI() {
-		
+	public func fill(number: Int, x: Double, y: Double, z: Double) {
+		lblNumber.text = "\(number)"
+		lblCoordX.text = String(format: "%.3f", x)
+		lblCoordY.text = String(format: "%.3f", y)
+		lblCoordZ.text = String(format: "%.3f", z)
+	}
+	
+	public func fill(node: Node) {
+		fill(number: node.number, x: node.x, y: node.y, z: node.z)
 	}
 	
 }

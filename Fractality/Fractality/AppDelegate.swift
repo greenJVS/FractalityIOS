@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		let controller = NodesCollectionViewController()
+		let controller = NodesCollectionViewController(collectionViewLayout: NodeCollectionViewFlowLayout())
 		let nc = UINavigationController(rootViewController: controller)
 		
 		window = UIWindow()

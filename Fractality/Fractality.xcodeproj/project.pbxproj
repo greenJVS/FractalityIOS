@@ -15,6 +15,7 @@
 		8451DDDE2229CA7100558BBF /* NodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDDD2229CA7100558BBF /* NodeCollectionViewCell.swift */; };
 		8451DDE12229CBE300558BBF /* UIColor+Fractality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDE02229CBE300558BBF /* UIColor+Fractality.swift */; };
 		8451DDE32229D21100558BBF /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDE22229D21100558BBF /* Node.swift */; };
+		847AB3212229DF7800416F20 /* NodeCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AB3202229DF7800416F20 /* NodeCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8451DDDD2229CA7100558BBF /* NodeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCollectionViewCell.swift; sourceTree = "<group>"; };
 		8451DDE02229CBE300558BBF /* UIColor+Fractality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Fractality.swift"; sourceTree = "<group>"; };
 		8451DDE22229D21100558BBF /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		847AB3202229DF7800416F20 /* NodeCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				8451DDDD2229CA7100558BBF /* NodeCollectionViewCell.swift */,
+				847AB3202229DF7800416F20 /* NodeCollectionViewFlowLayout.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				8451DDCC2229C75900558BBF /* Fractality.xcdatamodeld in Sources */,
 				8451DDE32229D21100558BBF /* Node.swift in Sources */,
 				8451DDC42229C75900558BBF /* AppDelegate.swift in Sources */,
+				847AB3212229DF7800416F20 /* NodeCollectionViewFlowLayout.swift in Sources */,
 				8451DDD92229C8C100558BBF /* NodesCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,37 +14,46 @@ class NodesCollectionViewController: UICollectionViewController {
 
 	private let kNodeCVCellReuseIdentifier = "NodeCell"
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-         self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(NodeCollectionViewCell.self, forCellWithReuseIdentifier: kNodeCVCellReuseIdentifier)
-
-    }
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		title = "Fractality"
+		
+		self.collectionView.backgroundColor = .white
+		
+		self.clearsSelectionOnViewWillAppear = false
+		
+		// Register cell classes
+		self.collectionView!.register(NodeCollectionViewCell.self, forCellWithReuseIdentifier: kNodeCVCellReuseIdentifier)
+	}
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return 35
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kNodeCVCellReuseIdentifier, for: indexPath)
+		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kNodeCVCellReuseIdentifier, for: indexPath) as? NodeCollectionViewCell {
+			let x = Double.random(in: -10..<10)
+			let y = Double.random(in: -10..<10)
+			let z = Double.random(in: -10..<10)
+			let node = Node(number: indexPath.row, x: x, y: y, z: z)
+			cell.fill(node: node)
+			return cell
+		}
     
         // Configure the cell
     
-        return cell
+        return UICollectionViewCell()
     }
 
+	
     // MARK: UICollectionViewDelegate
 
     /*
@@ -75,5 +84,7 @@ class NodesCollectionViewController: UICollectionViewController {
     
     }
     */
+	
+	
 
 }
