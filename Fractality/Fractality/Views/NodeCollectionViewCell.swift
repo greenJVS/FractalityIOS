@@ -194,39 +194,26 @@ class NodeCollectionViewCell: UICollectionViewCell {
 			}
 		}
 		
-		let size = CGSize(width: inset * 1.6, height: 3)
+		let size = CGSize(width: inset * 1.7, height: 8)
 		
 		arrows.forEach({ $0.removeFromSuperview() })
 		arrows = []
 		
 		(0..<8).forEach({
-			let vArrow = UIView()
-			vArrow.isHidden = true
-			vArrow.backgroundColor = .gray
-			vArrow.translatesAutoresizingMaskIntoConstraints = false
+			let imgArrow = UIImageView(image: #imageLiteral(resourceName: "arrow"))
+			imgArrow.isHidden = true
+			imgArrow.translatesAutoresizingMaskIntoConstraints = false
+			imgArrow.tintColor = .red
 			
-			arrows.append(vArrow)
-			contentView.addSubview(vArrow)
+			arrows.append(imgArrow)
+			contentView.addSubview(imgArrow)
 			
 			NSLayoutConstraint.activate([
-				vArrow.widthAnchor.constraint(equalToConstant: size.width),
-				vArrow.heightAnchor.constraint(equalToConstant: size.height),
+				imgArrow.widthAnchor.constraint(equalToConstant: size.width),
+				imgArrow.heightAnchor.constraint(equalToConstant: size.height),
 				
-				horizontalConstraint(for: vArrow, at: $0),
-				verticalConstraint(for: vArrow, at: $0)
-				])
-			
-			let vDirection = UIView()
-			vDirection.backgroundColor = .red
-			vDirection.translatesAutoresizingMaskIntoConstraints = false
-			
-			vArrow.addSubview(vDirection)
-			
-			NSLayoutConstraint.activate([
-				vDirection.trailingAnchor.constraint(equalTo: vArrow.trailingAnchor),
-				vDirection.centerYAnchor.constraint(equalTo: vArrow.centerYAnchor),
-				vDirection.heightAnchor.constraint(equalToConstant: 10),
-				vDirection.widthAnchor.constraint(equalToConstant: 3)
+				horizontalConstraint(for: imgArrow, at: $0),
+				verticalConstraint(for: imgArrow, at: $0)
 				])
 		})
 	}
