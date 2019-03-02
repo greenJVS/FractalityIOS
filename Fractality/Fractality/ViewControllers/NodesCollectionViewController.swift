@@ -19,6 +19,8 @@ class NodesCollectionViewController: UICollectionViewController {
 	private var selectedIndexPath: IndexPath?
 	private var nodes: [Node] = []
 	
+	private lazy var barBtnAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barBtnAdd_Tapped(_:)))
+	
 	init() {
 		super.init(collectionViewLayout: flowLayout)
 	}
@@ -31,6 +33,9 @@ class NodesCollectionViewController: UICollectionViewController {
 		super.viewDidLoad()
 		title = "Fractality"
 		
+		self.navigationItem.leftBarButtonItem = editButtonItem
+		self.navigationItem.rightBarButtonItem = barBtnAdd
+		
 		self.collectionView.backgroundColor = .graphite
 		self.collectionView.allowsSelection = true
 		self.collectionView.allowsMultipleSelection = false
@@ -40,15 +45,35 @@ class NodesCollectionViewController: UICollectionViewController {
 		// Register cell classes
 		self.collectionView!.register(NodeCollectionViewCell.self, forCellWithReuseIdentifier: kNodeCVCellReuseIdentifier)
 		
-		(0..<35).forEach({
+		/*
+		(0..<5).forEach({
 			let x = Double.random(in: -10..<10)
 			let y = Double.random(in: -10..<10)
 			let z = Double.random(in: -10..<10)
 			let node = Node(number: $0, x: x, y: y, z: z)
 			nodes.append(node)
 		})
+		*/
 	}
 
+	override func setEditing(_ editing: Bool, animated: Bool) {
+		super.setEditing(editing, animated: animated)
+		
+		barBtnAdd.isEnabled = !editing
+		collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
+	}
+	
+	@objc private func barBtnAdd_Tapped(_ sender: UIBarButtonItem) {
+		let x = Double.random(in: -10..<10)
+		let y = Double.random(in: -10..<10)
+		let z = Double.random(in: -10..<10)
+		let node = Node(number: nodes.count, x: x, y: y, z: z)
+		nodes.append(node)
+		
+		let indexPath = IndexPath(item: nodes.count - 1, section: 0)
+		collectionView.insertItems(at: [indexPath])
+	}
+	
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -65,6 +90,8 @@ class NodesCollectionViewController: UICollectionViewController {
 		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kNodeCVCellReuseIdentifier, for: indexPath) as? NodeCollectionViewCell {
 			let node = nodes[indexPath.row]
 			cell.fill(node: node)
+			cell.isEditing = self.isEditing
+			cell.delegate = self
 			return cell
 		}
 		
@@ -87,20 +114,19 @@ class NodesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-
-
 	
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
+        return !isEditing
     }
 	
 	override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-		return true
+		return isEditing
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-		print("moved")
+		let item = nodes.remove(at: sourceIndexPath.item)
+		nodes.insert(item, at: destinationIndexPath.item)
 	}
 	
     /*
@@ -120,6 +146,16 @@ class NodesCollectionViewController: UICollectionViewController {
 	
 	
 
+}
+
+extension NodesCollectionViewController: NodeCollectionViewCellDelegate {
+	
+	func nodeCollectionViewCellDidTappedDelete(_ cell: NodeCollectionViewCell) {
+		if let indexPath = collectionView.indexPath(for: cell) {
+			nodes.remove(at: indexPath.item)
+			collectionView.deleteItems(at: [indexPath])
+		}
+	}
 }
 
 /*

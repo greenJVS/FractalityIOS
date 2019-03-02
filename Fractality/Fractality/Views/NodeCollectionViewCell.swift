@@ -8,9 +8,16 @@
 
 import UIKit
 
+protocol NodeCollectionViewCellDelegate: class {
+	func nodeCollectionViewCellDidTappedDelete(_ cell: NodeCollectionViewCell)
+}
+
 class NodeCollectionViewCell: UICollectionViewCell {
 	
+	weak var delegate: NodeCollectionViewCellDelegate?
+	
 	private let inset: CGFloat = 10
+	private let btnDeleteSize: CGFloat = 20
 	
 	private lazy var vCell: UIView = {
 		let v = UIView()
@@ -20,10 +27,27 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		v.layer.shadowColor = UIColor.black.cgColor
 		v.layer.shadowRadius = 2
 		v.layer.shadowOffset = CGSize(width: 0, height: 4)
-		v.layer.shadowOpacity = 0.05
+		v.layer.shadowOpacity = 0.1
 		
 		v.translatesAutoresizingMaskIntoConstraints = false
 		return v
+	}()
+	private lazy var vBtnDeleteEffect: UIVisualEffectView = {
+		let effect = UIBlurEffect(style: .extraLight)
+		let v = UIVisualEffectView(effect: effect)
+		
+		v.layer.cornerRadius = btnDeleteSize * 0.5
+		v.layer.masksToBounds = true
+		
+		v.translatesAutoresizingMaskIntoConstraints = false
+		return v
+	}()
+	private lazy var btnDelete: UIButton = {
+		let btn = UIButton(type: .system)
+		btn.setTitle("✕", for: .normal)
+		btn.addTarget(self, action: #selector(btnDelete_Tapped(_:)), for: .touchUpInside)
+		btn.translatesAutoresizingMaskIntoConstraints = false
+		return btn
 	}()
 	private lazy var lblNumber: UILabel = {
 		let lbl = UILabel()
@@ -71,11 +95,17 @@ class NodeCollectionViewCell: UICollectionViewCell {
 	}()
 	
 	private var arrows: [UIView] = []
+	var isEditing: Bool = false {
+		didSet {
+			vBtnDeleteEffect.isHidden = !isEditing
+		}
+	}
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
 		contentView.addSubview(vCell)
+		contentView.addSubview(vBtnDeleteEffect)
 		
 		vCell.addSubview(lblNumber)
 		vCell.addSubview(stvCoords)
@@ -83,6 +113,10 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		stvCoords.addArrangedSubview(lblCoordX)
 		stvCoords.addArrangedSubview(lblCoordY)
 		stvCoords.addArrangedSubview(lblCoordZ)
+		
+		vBtnDeleteEffect.contentView.addSubview(btnDelete)
+		
+		let btnDeletePadding: CGFloat = 0
 		
 		NSLayoutConstraint.activate([
 			vCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
@@ -96,8 +130,20 @@ class NodeCollectionViewCell: UICollectionViewCell {
 			stvCoords.leadingAnchor.constraint(equalTo: lblNumber.trailingAnchor, constant: 4),
 			stvCoords.trailingAnchor.constraint(equalTo: vCell.trailingAnchor, constant: -12),
 			stvCoords.topAnchor.constraint(equalTo: vCell.topAnchor, constant: 16),
-			stvCoords.bottomAnchor.constraint(equalTo: vCell.bottomAnchor, constant: -16)
+			stvCoords.bottomAnchor.constraint(equalTo: vCell.bottomAnchor, constant: -16),
+			
+			vBtnDeleteEffect.centerYAnchor.constraint(equalTo: vCell.topAnchor, constant: 2),
+			vBtnDeleteEffect.centerXAnchor.constraint(equalTo: vCell.leadingAnchor, constant: 2),
+			vBtnDeleteEffect.widthAnchor.constraint(equalToConstant: btnDeleteSize),
+			vBtnDeleteEffect.heightAnchor.constraint(equalToConstant: btnDeleteSize),
+			
+			btnDelete.leadingAnchor.constraint(equalTo: vBtnDeleteEffect.leadingAnchor, constant: btnDeletePadding),
+			btnDelete.trailingAnchor.constraint(equalTo: vBtnDeleteEffect.trailingAnchor, constant: -btnDeletePadding),
+			btnDelete.topAnchor.constraint(equalTo: vBtnDeleteEffect.topAnchor, constant: btnDeletePadding),
+			btnDelete.bottomAnchor.constraint(equalTo: vBtnDeleteEffect.bottomAnchor, constant: -btnDeletePadding)
 		])
+		
+		contentView.bringSubviewToFront(vBtnDeleteEffect)
 		
 		addArrows()
 	}
@@ -142,15 +188,6 @@ class NodeCollectionViewCell: UICollectionViewCell {
 	}
 	
 	private func rotateToCenter(view: UIView, at index: Int) {
-		/*
-		let center = CGPoint(x: contentView.bounds.width * 0.5, y: contentView.bounds.height * 0.5)
-		let viewCenter = view.center
-		
-		let deltaX: CGFloat = viewCenter.x - center.x
-		let deltaY: CGFloat = viewCenter.y - center.y
-		
-		let angle = atan(deltaY / deltaX)
-		*/
 		let angle: CGFloat = {
 			switch index {
 			case 0: return .pi * 1.25
@@ -194,13 +231,17 @@ class NodeCollectionViewCell: UICollectionViewCell {
 			}
 		}
 		
-		let size = CGSize(width: inset * 1.7, height: 8)
-		
 		arrows.forEach({ $0.removeFromSuperview() })
 		arrows = []
 		
+		let image = #imageLiteral(resourceName: "arrow")
+		let aspectRatio = image.size.width / image.size.height
+		
+		let arrowWidth = inset * 1.7
+		let size = CGSize(width: arrowWidth, height: arrowWidth / aspectRatio)
+		
 		(0..<8).forEach({
-			let imgArrow = UIImageView(image: #imageLiteral(resourceName: "arrow"))
+			let imgArrow = UIImageView(image: image)
 			imgArrow.isHidden = true
 			imgArrow.translatesAutoresizingMaskIntoConstraints = false
 			imgArrow.tintColor = .red
@@ -216,5 +257,9 @@ class NodeCollectionViewCell: UICollectionViewCell {
 				verticalConstraint(for: imgArrow, at: $0)
 				])
 		})
+	}
+	
+	@objc private func btnDelete_Tapped(_ sender: UIButton) {
+		delegate?.nodeCollectionViewCellDidTappedDelete(self)
 	}
 }
