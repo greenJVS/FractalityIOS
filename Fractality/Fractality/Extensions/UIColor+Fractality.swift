@@ -19,4 +19,5 @@ extension UIColor {
 	open class var limeGreen: UIColor { return UIColor.rgba(r: 39, g: 174, b: 96) }
 	open class var brightBlue: UIColor { return UIColor.rgba(r: 45, g: 156, b: 219) }
 	open class var veryDarkGray: UIColor { return UIColor.rgba(r: 36, g: 35, b: 35) }
+	open class var graphite: UIColor { return UIColor.rgba(r: 51, g: 51, b: 51) }
 }

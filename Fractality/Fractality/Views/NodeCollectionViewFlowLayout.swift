@@ -10,9 +10,33 @@ import UIKit
 
 class NodeCollectionViewFlowLayout: UICollectionViewFlowLayout {
 	
+	override var minimumLineSpacing: CGFloat {
+		get {
+			return 0
+		}
+		set {
+			self.minimumLineSpacing = newValue
+		}
+	}
+	
+	override var minimumInteritemSpacing: CGFloat {
+		get {
+			return 0
+		}
+		set {
+			self.minimumInteritemSpacing = newValue
+		}
+	}
+	
 	override var itemSize: CGSize {
 		get {
-			return CGSize(width: 130, height: 100)
+			let height: CGFloat = 100
+			
+			let numberOfItemsInRow: CGFloat = 3
+			let viewWidth = collectionView?.frame.width ?? 0.0
+			let width = viewWidth / numberOfItemsInRow
+			
+			return CGSize(width: width, height: height)
 		}
 		set {
 			self.itemSize = newValue

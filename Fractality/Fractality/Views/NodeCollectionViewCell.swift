@@ -16,7 +16,12 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		let v = UIView()
 		v.backgroundColor = .veryDarkGray
 		v.layer.cornerRadius = 20
-		v.clipsToBounds = true
+		
+		v.layer.shadowColor = UIColor.black.cgColor
+		v.layer.shadowRadius = 2
+		v.layer.shadowOffset = CGSize(width: 0, height: 4)
+		v.layer.shadowOpacity = 0.05
+		
 		v.translatesAutoresizingMaskIntoConstraints = false
 		return v
 	}()
@@ -24,6 +29,7 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		let lbl = UILabel()
 		lbl.textColor = .softYellow
 		lbl.font = .systemFont(ofSize: 48, weight: .regular)
+		lbl.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 		lbl.translatesAutoresizingMaskIntoConstraints = false
 		return lbl
 	}()
@@ -64,6 +70,8 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		return lbl
 	}()
 	
+	private var arrows: [UIView] = []
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
@@ -89,11 +97,19 @@ class NodeCollectionViewCell: UICollectionViewCell {
 			stvCoords.trailingAnchor.constraint(equalTo: vCell.trailingAnchor, constant: -12),
 			stvCoords.topAnchor.constraint(equalTo: vCell.topAnchor, constant: 16),
 			stvCoords.bottomAnchor.constraint(equalTo: vCell.bottomAnchor, constant: -16)
-		])		
+		])
+		
+		addArrows()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+	
+	override var isSelected: Bool {
+		didSet {
+			updateArrows()
+		}
 	}
 	
 	override func prepareForReuse() {
@@ -116,4 +132,102 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		fill(number: node.number, x: node.x, y: node.y, z: node.z)
 	}
 	
+	private func updateArrows() {
+		arrows.enumerated().forEach({ index, view in
+			view.isHidden = !isSelected
+			if isSelected {
+				rotateToCenter(view: view, at: index)
+			}
+		})
+	}
+	
+	private func rotateToCenter(view: UIView, at index: Int) {
+		/*
+		let center = CGPoint(x: contentView.bounds.width * 0.5, y: contentView.bounds.height * 0.5)
+		let viewCenter = view.center
+		
+		let deltaX: CGFloat = viewCenter.x - center.x
+		let deltaY: CGFloat = viewCenter.y - center.y
+		
+		let angle = atan(deltaY / deltaX)
+		*/
+		let angle: CGFloat = {
+			switch index {
+			case 0: return .pi * 1.25
+			case 1: return .pi * 1.5
+			case 2: return .pi * 1.75
+			case 3: return .pi
+			case 4: return 0
+			case 5: return .pi * 0.75
+			case 6: return .pi * 0.5
+			case 7: return .pi * 0.25
+			default: return 0
+			}
+		}()
+		view.transform = CGAffineTransform(rotationAngle: angle)
+	}
+	
+	private func addArrows() {
+		func horizontalConstraint(for view: UIView, at index: Int) -> NSLayoutConstraint {
+			switch index {
+			case 0, 3, 5:
+				return view.centerXAnchor.constraint(equalTo: contentView.leadingAnchor)
+			case 1, 6:
+				return view.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+			case 2, 4, 7:
+				return view.centerXAnchor.constraint(equalTo: contentView.trailingAnchor)
+			default:
+				return NSLayoutConstraint()
+			}
+		}
+		
+		func verticalConstraint(for view: UIView, at index: Int) -> NSLayoutConstraint {
+			switch index {
+			case 0, 1, 2:
+				return view.centerYAnchor.constraint(equalTo: contentView.topAnchor)
+			case 3, 4:
+				return view.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+			case 5, 6, 7:
+				return view.centerYAnchor.constraint(equalTo: contentView.bottomAnchor)
+			default:
+				return NSLayoutConstraint()
+			}
+		}
+		
+		let size = CGSize(width: inset * 1.6, height: 3)
+		
+		arrows.forEach({ $0.removeFromSuperview() })
+		arrows = []
+		
+		(0..<8).forEach({
+			let vArrow = UIView()
+			vArrow.isHidden = true
+			vArrow.backgroundColor = .gray
+			vArrow.translatesAutoresizingMaskIntoConstraints = false
+			
+			arrows.append(vArrow)
+			contentView.addSubview(vArrow)
+			
+			NSLayoutConstraint.activate([
+				vArrow.widthAnchor.constraint(equalToConstant: size.width),
+				vArrow.heightAnchor.constraint(equalToConstant: size.height),
+				
+				horizontalConstraint(for: vArrow, at: $0),
+				verticalConstraint(for: vArrow, at: $0)
+				])
+			
+			let vDirection = UIView()
+			vDirection.backgroundColor = .red
+			vDirection.translatesAutoresizingMaskIntoConstraints = false
+			
+			vArrow.addSubview(vDirection)
+			
+			NSLayoutConstraint.activate([
+				vDirection.trailingAnchor.constraint(equalTo: vArrow.trailingAnchor),
+				vDirection.centerYAnchor.constraint(equalTo: vArrow.centerYAnchor),
+				vDirection.heightAnchor.constraint(equalToConstant: 10),
+				vDirection.widthAnchor.constraint(equalToConstant: 3)
+				])
+		})
+	}
 }
