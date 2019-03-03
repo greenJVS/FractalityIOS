@@ -44,16 +44,6 @@ class NodesCollectionViewController: UICollectionViewController {
 		
 		// Register cell classes
 		self.collectionView!.register(NodeCollectionViewCell.self, forCellWithReuseIdentifier: kNodeCVCellReuseIdentifier)
-		
-		/*
-		(0..<5).forEach({
-			let x = Double.random(in: -10..<10)
-			let y = Double.random(in: -10..<10)
-			let z = Double.random(in: -10..<10)
-			let node = Node(number: $0, x: x, y: y, z: z)
-			nodes.append(node)
-		})
-		*/
 	}
 
 	override func setEditing(_ editing: Bool, animated: Bool) {
@@ -82,7 +72,6 @@ class NodesCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return nodes.count
     }
 

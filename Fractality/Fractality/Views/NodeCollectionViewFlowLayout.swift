@@ -10,6 +10,8 @@ import UIKit
 
 class NodeCollectionViewFlowLayout: UICollectionViewFlowLayout {
 	
+	private let minimunAspectRatio: CGFloat = 1.5
+	
 	override var minimumLineSpacing: CGFloat {
 		get {
 			return 0
@@ -31,10 +33,9 @@ class NodeCollectionViewFlowLayout: UICollectionViewFlowLayout {
 	override var itemSize: CGSize {
 		get {
 			let height: CGFloat = 100
-			
-			let numberOfItemsInRow: CGFloat = 3
 			let viewWidth = collectionView?.frame.width ?? 0.0
-			let width = viewWidth / numberOfItemsInRow
+			let numberOfItemsInRow: CGFloat = viewWidth / (height * minimunAspectRatio)
+			let width = viewWidth / numberOfItemsInRow.rounded(.down)
 			
 			return CGSize(width: width, height: height)
 		}
