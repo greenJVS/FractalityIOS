@@ -37,6 +37,7 @@ class NodesCollectionViewController: UICollectionViewController {
 		self.collectionView.backgroundColor = .graphite
 		self.collectionView.allowsSelection = true
 		self.collectionView.allowsMultipleSelection = false
+		self.collectionView.contentInset = .init(top: 10, left: 10, bottom: 0, right: 10)
 		
 		self.clearsSelectionOnViewWillAppear = false
 		

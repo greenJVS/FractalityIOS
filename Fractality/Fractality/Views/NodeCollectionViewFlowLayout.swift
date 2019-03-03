@@ -33,7 +33,8 @@ class NodeCollectionViewFlowLayout: UICollectionViewFlowLayout {
 	override var itemSize: CGSize {
 		get {
 			let height: CGFloat = 100
-			let viewWidth = collectionView?.frame.width ?? 0.0
+			let contentInsets = collectionView?.contentInset ?? .zero
+			let viewWidth = (collectionView?.frame.width ?? 0.0) - contentInsets.left - contentInsets.right
 			let numberOfItemsInRow: CGFloat = viewWidth / (height * minimunAspectRatio)
 			let width = viewWidth / numberOfItemsInRow.rounded(.down)
 			

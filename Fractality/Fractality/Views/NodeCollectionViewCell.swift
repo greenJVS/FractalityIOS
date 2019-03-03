@@ -177,6 +177,7 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		}
 	}
 	
+	// https://stackoverflow.com/questions/40116282/preventing-moving-uicollectionviewcell-by-its-center-when-dragging
 	override var isHighlighted: Bool {
 		didSet {
 			if isEditing {
