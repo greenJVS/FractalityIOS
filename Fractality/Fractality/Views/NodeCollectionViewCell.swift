@@ -103,6 +103,7 @@ class NodeCollectionViewCell: UICollectionViewCell {
 	}()
 	
 	private var arrows: [UIView] = []
+	var arrowsDirections: [Bool] = []
 	var isEditing: Bool = false {
 		didSet {
 			vBtnDeleteEffect.isHidden = !isEditing
@@ -181,7 +182,6 @@ class NodeCollectionViewCell: UICollectionViewCell {
 	override var isHighlighted: Bool {
 		didSet {
 			if isEditing {
-//				vCellPlaceholderEffect.isHidden = !isHighlighted
 				UIView.animate(withDuration: 0.15) {
 					self.contentView.transform = self.isHighlighted ? .init(scaleX: 0.9, y: 0.9) : .identity
 				}
@@ -211,9 +211,13 @@ class NodeCollectionViewCell: UICollectionViewCell {
 	
 	private func updateArrows() {
 		arrows.enumerated().forEach({ index, view in
-			view.isHidden = !isSelected
+			view.isHidden = !(arrowsDirections.count > index)
 			if isSelected {
 				rotateToCenter(view: view, at: index)
+				
+				if arrowsDirections.count > index, !arrowsDirections[index] {
+					view.transform = view.transform.rotated(by: .pi)
+				}
 			}
 		})
 	}

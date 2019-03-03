@@ -16,6 +16,8 @@ class NodesCollectionViewController: UICollectionViewController {
 	
 	private var selectedIndexPath: IndexPath?
 	private var nodes: [Node] = []
+	private var relativeNodes: [(node: Node, isStart: Bool)] = []
+	private var beams: [Beam] = []
 	
 	private lazy var barBtnAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barBtnAdd_Tapped(_:)))
 	
@@ -43,6 +45,42 @@ class NodesCollectionViewController: UICollectionViewController {
 		
 		// Register cell classes
 		self.collectionView.register(NodeCollectionViewCell.self, forCellWithReuseIdentifier: kNodeCVCellReuseIdentifier)
+		
+		// TODO: Remove test data
+		(0..<10).forEach({ _ in
+			let x = Double.random(in: -10..<10)
+			let y = Double.random(in: -10..<10)
+			let z = Double.random(in: -10..<10)
+			let node = Node(number: nodes.count, x: x, y: y, z: z)
+			nodes.append(node)
+		})
+		beams.append(Beam(number: 0,
+						  from: nodes.first(where: { $0.number == 0 }),
+						  to: nodes.first(where: { $0.number == 1 })))
+		beams.append(Beam(number: 1,
+						  from: nodes.first(where: { $0.number == 0 }),
+						  to: nodes.first(where: { $0.number == 2 })))
+		beams.append(Beam(number: 2,
+						  from: nodes.first(where: { $0.number == 0 }),
+						  to: nodes.first(where: { $0.number == 3 })))
+		beams.append(Beam(number: 3,
+						  from: nodes.first(where: { $0.number == 0 }),
+						  to: nodes.first(where: { $0.number == 4 })))
+		beams.append(Beam(number: 4,
+						  from: nodes.first(where: { $0.number == 5 }),
+						  to: nodes.first(where: { $0.number == 1 })))
+		beams.append(Beam(number: 5,
+						  from: nodes.first(where: { $0.number == 5 }),
+						  to: nodes.first(where: { $0.number == 2 })))
+		beams.append(Beam(number: 6,
+						  from: nodes.first(where: { $0.number == 5 }),
+						  to: nodes.first(where: { $0.number == 3 })))
+		beams.append(Beam(number: 7,
+						  from: nodes.first(where: { $0.number == 5 }),
+						  to: nodes.first(where: { $0.number == 4 })))
+		beams.append(Beam(number: 8,
+						  from: nodes.first(where: { $0.number == 1 }),
+						  to: nodes.first(where: { $0.number == 5 })))
 	}
 
 	override func setEditing(_ editing: Bool, animated: Bool) {
@@ -59,6 +97,17 @@ class NodesCollectionViewController: UICollectionViewController {
 		}
 		
 		collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
+	}
+	
+	private func updateRelativeNodes(for node: Node) {
+		relativeNodes = []
+		beams.forEach({
+			if let startNode = $0.startNode, startNode.number == node.number {
+				relativeNodes.append((node: node, isStart: true))
+			} else if let endNode = $0.endNode, endNode.number == node.number {
+				relativeNodes.append((node: node, isStart: false))
+			}
+		})
 	}
 	
 	@objc private func barBtnAdd_Tapped(_ sender: UIBarButtonItem) {
@@ -86,9 +135,13 @@ class NodesCollectionViewController: UICollectionViewController {
 		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kNodeCVCellReuseIdentifier, for: indexPath) as? NodeCollectionViewCell {
 			let node = nodes[indexPath.row]
 			cell.fill(node: node)
+			
 			cell.isEditing = self.isEditing
-			cell.isSelected = selectedIndexPath == indexPath && !isEditing
+			let isSelected = selectedIndexPath == indexPath && !isEditing
+			cell.arrowsDirections = isSelected ? relativeNodes.map({ $0.1 }) : []
+			cell.isSelected = isSelected			
 			cell.isPlaceholder = !self.isEditing && selectedIndexPath != nil && selectedIndexPath != indexPath
+			
 			cell.delegate = self
 			return cell
 		}
@@ -101,9 +154,14 @@ class NodesCollectionViewController: UICollectionViewController {
 			collectionView.deselectItem(at: indexPath, animated: true)
 			selectedIndexPath = nil
 			barBtnAdd.isEnabled = true
+			
+			relativeNodes = []
 		} else {
 			selectedIndexPath = indexPath
 			barBtnAdd.isEnabled = false
+			let node = nodes[indexPath.item]
+			
+			updateRelativeNodes(for: node)
 		}
 		
 		collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)

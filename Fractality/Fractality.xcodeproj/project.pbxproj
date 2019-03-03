@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8441190D222C7FA500256B75 /* Beam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8441190C222C7FA500256B75 /* Beam.swift */; };
 		8451DDC42229C75900558BBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDC32229C75900558BBF /* AppDelegate.swift */; };
 		8451DDCC2229C75900558BBF /* Fractality.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8451DDCA2229C75900558BBF /* Fractality.xcdatamodeld */; };
 		8451DDCE2229C75900558BBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451DDCD2229C75900558BBF /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8441190C222C7FA500256B75 /* Beam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beam.swift; sourceTree = "<group>"; };
 		8451DDC02229C75900558BBF /* Fractality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fractality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8451DDC32229C75900558BBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8451DDCB2229C75900558BBF /* Fractality.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fractality.xcdatamodel; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				8451DDE22229D21100558BBF /* Node.swift */,
+				8441190C222C7FA500256B75 /* Beam.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			files = (
 				8451DDE12229CBE300558BBF /* UIColor+Fractality.swift in Sources */,
 				8451DDDE2229CA7100558BBF /* NodeCollectionViewCell.swift in Sources */,
+				8441190D222C7FA500256B75 /* Beam.swift in Sources */,
 				8451DDCC2229C75900558BBF /* Fractality.xcdatamodeld in Sources */,
 				8451DDE32229D21100558BBF /* Node.swift in Sources */,
 				8451DDC42229C75900558BBF /* AppDelegate.swift in Sources */,

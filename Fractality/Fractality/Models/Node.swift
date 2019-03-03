@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Node {
+class Node {
 	var number: Int
 	var x: Double
 	var y: Double
