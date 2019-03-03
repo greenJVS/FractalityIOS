@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class NodesCollectionViewController: UICollectionViewController {
 
 	private let kNodeCVCellReuseIdentifier = "NodeCell"
@@ -43,13 +41,22 @@ class NodesCollectionViewController: UICollectionViewController {
 		self.clearsSelectionOnViewWillAppear = false
 		
 		// Register cell classes
-		self.collectionView!.register(NodeCollectionViewCell.self, forCellWithReuseIdentifier: kNodeCVCellReuseIdentifier)
+		self.collectionView.register(NodeCollectionViewCell.self, forCellWithReuseIdentifier: kNodeCVCellReuseIdentifier)
 	}
 
 	override func setEditing(_ editing: Bool, animated: Bool) {
 		super.setEditing(editing, animated: animated)
 		
 		barBtnAdd.isEnabled = !editing
+		
+		if !editing {
+			nodes.enumerated().forEach({ index, node in
+				nodes[index].number = index
+			})
+		} else {
+			selectedIndexPath = nil
+		}
+		
 		collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
 	}
 	
@@ -64,12 +71,11 @@ class NodesCollectionViewController: UICollectionViewController {
 		collectionView.insertItems(at: [indexPath])
 	}
 	
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return nodes.count
@@ -80,6 +86,8 @@ class NodesCollectionViewController: UICollectionViewController {
 			let node = nodes[indexPath.row]
 			cell.fill(node: node)
 			cell.isEditing = self.isEditing
+			cell.isSelected = selectedIndexPath == indexPath && !isEditing
+			cell.isPlaceholder = !self.isEditing && selectedIndexPath != nil && selectedIndexPath != indexPath
 			cell.delegate = self
 			return cell
 		}
@@ -91,25 +99,27 @@ class NodesCollectionViewController: UICollectionViewController {
 		if selectedIndexPath == indexPath {
 			collectionView.deselectItem(at: indexPath, animated: true)
 			selectedIndexPath = nil
+			barBtnAdd.isEnabled = true
 		} else {
 			selectedIndexPath = indexPath
+			barBtnAdd.isEnabled = false
 		}
+		
+		collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
 	}
 	
-    // MARK: UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
 
-	
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
 	
-    // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return !isEditing
     }
 	
 	override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+		print("can move called!")
 		return isEditing
 	}
 	
@@ -118,24 +128,25 @@ class NodesCollectionViewController: UICollectionViewController {
 		nodes.insert(item, at: destinationIndexPath.item)
 	}
 	
-    /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+	/*
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
+        return true
     }
-
+	
+	
     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
+        return true
     }
 
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
+		print("wtf")
     }
-    */
-	
-	
+	*/
 
 }
+
+// MARK: - NodeCollectionViewCellDelegate
 
 extension NodesCollectionViewController: NodeCollectionViewCellDelegate {
 	
@@ -145,18 +156,5 @@ extension NodesCollectionViewController: NodeCollectionViewCellDelegate {
 			collectionView.deleteItems(at: [indexPath])
 		}
 	}
+	
 }
-
-/*
-extension NodesCollectionViewController: UICollectionViewDelegateFlowLayout {
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let height: CGFloat = 100
-		
-		let numberOfItemsInRow: CGFloat = 3
-		let viewWidth = self.view.frame.width
-		let width = viewWidth / numberOfItemsInRow
-		
-		return CGSize(width: width - 2, height: height)
-	}
-}
-*/

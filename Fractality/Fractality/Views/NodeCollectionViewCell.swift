@@ -28,6 +28,14 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		v.layer.shadowRadius = 2
 		v.layer.shadowOffset = CGSize(width: 0, height: 4)
 		v.layer.shadowOpacity = 0.1
+		v.layer.masksToBounds = true
+		
+		v.translatesAutoresizingMaskIntoConstraints = false
+		return v
+	}()
+	private lazy var vCellPlaceholderEffect: UIVisualEffectView = {
+		let effect = UIBlurEffect(style: .light)
+		let v = UIVisualEffectView(effect: effect)
 		
 		v.translatesAutoresizingMaskIntoConstraints = false
 		return v
@@ -100,6 +108,11 @@ class NodeCollectionViewCell: UICollectionViewCell {
 			vBtnDeleteEffect.isHidden = !isEditing
 		}
 	}
+	var isPlaceholder: Bool = false {
+		didSet {
+			vCellPlaceholderEffect.isHidden = !isPlaceholder
+		}
+	}
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -109,6 +122,7 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		
 		vCell.addSubview(lblNumber)
 		vCell.addSubview(stvCoords)
+		vCell.addSubview(vCellPlaceholderEffect)
 		
 		stvCoords.addArrangedSubview(lblCoordX)
 		stvCoords.addArrangedSubview(lblCoordY)
@@ -131,6 +145,11 @@ class NodeCollectionViewCell: UICollectionViewCell {
 			stvCoords.trailingAnchor.constraint(equalTo: vCell.trailingAnchor, constant: -12),
 			stvCoords.topAnchor.constraint(equalTo: vCell.topAnchor, constant: 16),
 			stvCoords.bottomAnchor.constraint(equalTo: vCell.bottomAnchor, constant: -16),
+			
+			vCellPlaceholderEffect.leadingAnchor.constraint(equalTo: vCell.leadingAnchor, constant: 0),
+			vCellPlaceholderEffect.trailingAnchor.constraint(equalTo: vCell.trailingAnchor, constant: 0),
+			vCellPlaceholderEffect.topAnchor.constraint(equalTo: vCell.topAnchor, constant: 0),
+			vCellPlaceholderEffect.bottomAnchor.constraint(equalTo: vCell.bottomAnchor, constant: 0),
 			
 			vBtnDeleteEffect.centerYAnchor.constraint(equalTo: vCell.topAnchor, constant: 2),
 			vBtnDeleteEffect.centerXAnchor.constraint(equalTo: vCell.leadingAnchor, constant: 2),
@@ -155,6 +174,17 @@ class NodeCollectionViewCell: UICollectionViewCell {
 	override var isSelected: Bool {
 		didSet {
 			updateArrows()
+		}
+	}
+	
+	override var isHighlighted: Bool {
+		didSet {
+			if isEditing {
+//				vCellPlaceholderEffect.isHidden = !isHighlighted
+				UIView.animate(withDuration: 0.15) {
+					self.contentView.transform = self.isHighlighted ? .init(scaleX: 0.9, y: 0.9) : .identity
+				}
+			}
 		}
 	}
 	
@@ -190,13 +220,13 @@ class NodeCollectionViewCell: UICollectionViewCell {
 	private func rotateToCenter(view: UIView, at index: Int) {
 		let angle: CGFloat = {
 			switch index {
-			case 0: return .pi * 1.25
-			case 1: return .pi * 1.5
-			case 2: return .pi * 1.75
-			case 3: return .pi
-			case 4: return 0
-			case 5: return .pi * 0.75
-			case 6: return .pi * 0.5
+			case 0: return .pi * 1.5
+			case 1: return .pi * 0.5
+			case 2: return .pi
+			case 3: return 0
+			case 4: return .pi * 1.25
+			case 5: return .pi * 1.75
+			case 6: return .pi * 0.75
 			case 7: return .pi * 0.25
 			default: return 0
 			}
@@ -207,11 +237,11 @@ class NodeCollectionViewCell: UICollectionViewCell {
 	private func addArrows() {
 		func horizontalConstraint(for view: UIView, at index: Int) -> NSLayoutConstraint {
 			switch index {
-			case 0, 3, 5:
+			case 4, 2, 6:
 				return view.centerXAnchor.constraint(equalTo: contentView.leadingAnchor)
-			case 1, 6:
+			case 0, 1:
 				return view.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-			case 2, 4, 7:
+			case 5, 3, 7:
 				return view.centerXAnchor.constraint(equalTo: contentView.trailingAnchor)
 			default:
 				return NSLayoutConstraint()
@@ -220,11 +250,11 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		
 		func verticalConstraint(for view: UIView, at index: Int) -> NSLayoutConstraint {
 			switch index {
-			case 0, 1, 2:
+			case 4, 0, 5:
 				return view.centerYAnchor.constraint(equalTo: contentView.topAnchor)
-			case 3, 4:
+			case 2, 3:
 				return view.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-			case 5, 6, 7:
+			case 6, 1, 7:
 				return view.centerYAnchor.constraint(equalTo: contentView.bottomAnchor)
 			default:
 				return NSLayoutConstraint()
