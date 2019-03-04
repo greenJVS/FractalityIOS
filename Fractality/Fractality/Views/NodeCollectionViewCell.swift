@@ -124,12 +124,13 @@ class NodeCollectionViewCell: UICollectionViewCell, MovableItem {
 	var isMoving: Bool = false {
 		didSet {
 			UIView.animate(
-				withDuration: 0.25,
+				withDuration: isMoving ? 0.1 : 0.25,
 				delay: 0,
 				options: isMoving ? .curveEaseIn : .curveEaseOut,
 				animations: {
 					self.vBtnDeleteEffect.alpha = self.isMoving ? 0 : 1
 					self.vCell.alpha = self.isMoving ? 0.75 : 1
+					self.vCell.transform = self.isMoving ? .init(scaleX: 1.1, y: 1.1) : .identity
 			},
 				completion: nil)
 		}

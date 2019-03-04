@@ -15,6 +15,7 @@ class NodesCollectionViewController: UICollectionViewController {
 	private let flowLayout = NodeCollectionViewFlowLayout()
 	
 	private var selectedIndexPath: IndexPath?
+	private var movingItemOffset: CGPoint = .zero
 	private var movingIndexPath: IndexPath? {
 		didSet {
 			if let indexPath = movingIndexPath {
@@ -48,7 +49,7 @@ class NodesCollectionViewController: UICollectionViewController {
 		NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
 		
 		gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(gestureRecognizerTriggered(recognizer:)))
-		gestureRecognizer.minimumPressDuration = 0.45
+		gestureRecognizer.minimumPressDuration = 0.49
 		gestureRecognizer.isEnabled = true
 		self.collectionView.addGestureRecognizer(gestureRecognizer)
 		
@@ -129,18 +130,51 @@ class NodesCollectionViewController: UICollectionViewController {
 		})
 	}
 	
+	private func offsetOfTouchFrom(recognizer: UIGestureRecognizer, inCell cell: UICollectionViewCell) -> CGPoint {
+		
+		let locationOfTouchInCell = recognizer.location(in: cell)
+		
+		let cellCenterX = cell.frame.width / 2
+		let cellCenterY = cell.frame.height / 2
+		
+		let cellCenter = CGPoint(x: cellCenterX, y: cellCenterY)
+		
+		var offSetPoint = CGPoint.zero
+		
+		offSetPoint.y = cellCenter.y - locationOfTouchInCell.y
+		offSetPoint.x = cellCenter.x - locationOfTouchInCell.x
+		
+		return offSetPoint
+		
+	}
+	
 	@objc private func gestureRecognizerTriggered(recognizer: UILongPressGestureRecognizer) {
 		guard isEditing else { return }
 		
 		switch(recognizer.state) {
 		case .began:
-			guard let selectedIndexPath = collectionView.indexPathForItem(at: recognizer.location(in: collectionView)) else {
-				break
-			}
-			movingIndexPath = selectedIndexPath
-			collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+			guard let indexPath = collectionView.indexPathForItem(at: recognizer.location(in: self.collectionView)),
+				let cell = collectionView.cellForItem(at: indexPath) else { return }
+			
+			collectionView.beginInteractiveMovementForItem(at: indexPath)
+			movingIndexPath = indexPath
+			
+			movingItemOffset = offsetOfTouchFrom(recognizer: recognizer, inCell: cell)
+			
+			// This is the vanilla location of the touch that alone would make the cell's center snap to user touch location
+			var location = recognizer.location(in: collectionView)
+			
+			location.x += movingItemOffset.x
+			location.y += movingItemOffset.y
+			
+			collectionView.updateInteractiveMovementTargetPosition(location)
 		case .changed:
-			collectionView.updateInteractiveMovementTargetPosition(recognizer.location(in: recognizer.view!))
+			var location = recognizer.location(in: collectionView)
+			
+			location.x += movingItemOffset.x
+			location.y += movingItemOffset.y
+			
+			collectionView.updateInteractiveMovementTargetPosition(location)
 		case .ended:
 			movingIndexPath = nil
 			collectionView.endInteractiveMovement()
@@ -162,6 +196,11 @@ class NodesCollectionViewController: UICollectionViewController {
 	}
 	
 	@objc func orientationChanged(_ notification: NSNotification) {
+		gestureRecognizer.state = .possible
+		collectionView.cancelInteractiveMovement()
+		collectionView.endInteractiveMovement()
+		movingIndexPath = nil
+		print("WTF! gesture state \(gestureRecognizer.state.rawValue)")
 		collectionView.reloadData()
 	}
 	
