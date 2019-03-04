@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let controller = NodesCollectionViewController()
 		let nc = UINavigationController(rootViewController: controller)
 		
+		
+//		let splitVC = UISplitViewController()
+//		splitVC.viewControllers = [UITableViewController(), nc]
+		
 		window = UIWindow()
 		window?.rootViewController = nc
 		window?.makeKeyAndVisible()		

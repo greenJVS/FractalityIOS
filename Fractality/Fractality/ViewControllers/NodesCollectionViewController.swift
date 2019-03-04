@@ -50,7 +50,6 @@ class NodesCollectionViewController: UICollectionViewController {
 		
 		gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(gestureRecognizerTriggered(recognizer:)))
 		gestureRecognizer.minimumPressDuration = 0.49
-		gestureRecognizer.isEnabled = true
 		self.collectionView.addGestureRecognizer(gestureRecognizer)
 		
 		self.navigationItem.leftBarButtonItem = editButtonItem
@@ -59,7 +58,7 @@ class NodesCollectionViewController: UICollectionViewController {
 		self.collectionView.backgroundColor = .graphite
 		self.collectionView.allowsSelection = true
 		self.collectionView.allowsMultipleSelection = false
-		self.collectionView.contentInset = .init(top: 10, left: 10, bottom: 0, right: 10)
+		self.collectionView.contentInset = .init(top: 10, left: 10, bottom: 10, right: 10)
 		
 		self.clearsSelectionOnViewWillAppear = false
 		
@@ -197,7 +196,6 @@ class NodesCollectionViewController: UICollectionViewController {
 	
 	@objc func orientationChanged(_ notification: NSNotification) {
 		gestureRecognizer.state = .possible
-		collectionView.cancelInteractiveMovement()
 		collectionView.endInteractiveMovement()
 		movingIndexPath = nil
 		print("WTF! gesture state \(gestureRecognizer.state.rawValue)")
