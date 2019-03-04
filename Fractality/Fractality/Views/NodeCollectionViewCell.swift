@@ -12,7 +12,11 @@ protocol NodeCollectionViewCellDelegate: class {
 	func nodeCollectionViewCellDidTappedDelete(_ cell: NodeCollectionViewCell)
 }
 
-class NodeCollectionViewCell: UICollectionViewCell {
+protocol MovableItem: class {
+	var isMoving: Bool { get set }
+}
+
+class NodeCollectionViewCell: UICollectionViewCell, MovableItem {
 	
 	weak var delegate: NodeCollectionViewCellDelegate?
 	
@@ -24,11 +28,12 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		v.backgroundColor = .veryDarkGray
 		v.layer.cornerRadius = 20
 		
+		/*
 		v.layer.shadowColor = UIColor.black.cgColor
 		v.layer.shadowRadius = 2
 		v.layer.shadowOffset = CGSize(width: 0, height: 4)
 		v.layer.shadowOpacity = 0.1
-		v.layer.masksToBounds = true
+		*/
 		
 		v.translatesAutoresizingMaskIntoConstraints = false
 		return v
@@ -36,7 +41,8 @@ class NodeCollectionViewCell: UICollectionViewCell {
 	private lazy var vCellPlaceholderEffect: UIVisualEffectView = {
 		let effect = UIBlurEffect(style: .light)
 		let v = UIVisualEffectView(effect: effect)
-		
+		v.layer.cornerRadius = 20
+		v.layer.masksToBounds = true
 		v.translatesAutoresizingMaskIntoConstraints = false
 		return v
 	}()
@@ -115,6 +121,20 @@ class NodeCollectionViewCell: UICollectionViewCell {
 		}
 	}
 	
+	var isMoving: Bool = false {
+		didSet {
+			UIView.animate(
+				withDuration: 0.25,
+				delay: 0,
+				options: isMoving ? .curveEaseIn : .curveEaseOut,
+				animations: {
+					self.vBtnDeleteEffect.alpha = self.isMoving ? 0 : 1
+					self.vCell.alpha = self.isMoving ? 0.75 : 1
+			},
+				completion: nil)
+		}
+	}
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
@@ -182,7 +202,7 @@ class NodeCollectionViewCell: UICollectionViewCell {
 	override var isHighlighted: Bool {
 		didSet {
 			if isEditing {
-				UIView.animate(withDuration: 0.15) {
+				UIView.animate(withDuration: 0.05) {
 					self.contentView.transform = self.isHighlighted ? .init(scaleX: 0.9, y: 0.9) : .identity
 				}
 			}

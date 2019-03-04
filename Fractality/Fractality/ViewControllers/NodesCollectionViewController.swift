@@ -15,11 +15,23 @@ class NodesCollectionViewController: UICollectionViewController {
 	private let flowLayout = NodeCollectionViewFlowLayout()
 	
 	private var selectedIndexPath: IndexPath?
+	private var movingIndexPath: IndexPath? {
+		didSet {
+			if let indexPath = movingIndexPath {
+				(collectionView.cellForItem(at: indexPath) as? MovableItem)?.isMoving = true
+			} else if let indexPath = oldValue {
+				(collectionView.cellForItem(at: indexPath) as? MovableItem)?.isMoving = false
+			}
+		}
+	}
+	
 	private var nodes: [Node] = []
 	private var relativeNodes: [(node: Node, isStart: Bool)] = []
 	private var beams: [Beam] = []
 	
 	private lazy var barBtnAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barBtnAdd_Tapped(_:)))
+	
+	private var gestureRecognizer: UILongPressGestureRecognizer!
 	
 	init() {
 		super.init(collectionViewLayout: flowLayout)
@@ -32,6 +44,13 @@ class NodesCollectionViewController: UICollectionViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		title = "Fractality"
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
+		
+		gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(gestureRecognizerTriggered(recognizer:)))
+		gestureRecognizer.minimumPressDuration = 0.45
+		gestureRecognizer.isEnabled = true
+		self.collectionView.addGestureRecognizer(gestureRecognizer)
 		
 		self.navigationItem.leftBarButtonItem = editButtonItem
 		self.navigationItem.rightBarButtonItem = barBtnAdd
@@ -46,7 +65,7 @@ class NodesCollectionViewController: UICollectionViewController {
 		// Register cell classes
 		self.collectionView.register(NodeCollectionViewCell.self, forCellWithReuseIdentifier: kNodeCVCellReuseIdentifier)
 		
-		// TODO: Remove test data
+		#warning("Remove test data")
 		(0..<10).forEach({ _ in
 			let x = Double.random(in: -10..<10)
 			let y = Double.random(in: -10..<10)
@@ -110,6 +129,27 @@ class NodesCollectionViewController: UICollectionViewController {
 		})
 	}
 	
+	@objc private func gestureRecognizerTriggered(recognizer: UILongPressGestureRecognizer) {
+		guard isEditing else { return }
+		
+		switch(recognizer.state) {
+		case .began:
+			guard let selectedIndexPath = collectionView.indexPathForItem(at: recognizer.location(in: collectionView)) else {
+				break
+			}
+			movingIndexPath = selectedIndexPath
+			collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+		case .changed:
+			collectionView.updateInteractiveMovementTargetPosition(recognizer.location(in: recognizer.view!))
+		case .ended:
+			movingIndexPath = nil
+			collectionView.endInteractiveMovement()
+		default:
+			movingIndexPath = nil
+			collectionView.cancelInteractiveMovement()
+		}
+	}
+	
 	@objc private func barBtnAdd_Tapped(_ sender: UIBarButtonItem) {
 		let x = Double.random(in: -10..<10)
 		let y = Double.random(in: -10..<10)
@@ -119,6 +159,10 @@ class NodesCollectionViewController: UICollectionViewController {
 		
 		let indexPath = IndexPath(item: nodes.count - 1, section: 0)
 		collectionView.insertItems(at: [indexPath])
+	}
+	
+	@objc func orientationChanged(_ notification: NSNotification) {
+		collectionView.reloadData()
 	}
 	
     // MARK: - UICollectionViewDataSource
