@@ -98,7 +98,7 @@ class NodesCollectionViewController: UICollectionViewController {
 						  from: nodes.first(where: { $0.number == 5 }),
 						  to: nodes.first(where: { $0.number == 4 })))
 		beams.append(Beam(number: 8,
-						  from: nodes.first(where: { $0.number == 1 }),
+						  from: nodes.first(where: { $0.number == 7 }),
 						  to: nodes.first(where: { $0.number == 5 })))
 	}
 
@@ -121,10 +121,11 @@ class NodesCollectionViewController: UICollectionViewController {
 	private func updateRelativeNodes(for node: Node) {
 		relativeNodes = []
 		beams.forEach({
-			if let startNode = $0.startNode, startNode.number == node.number {
-				relativeNodes.append((node: node, isStart: true))
-			} else if let endNode = $0.endNode, endNode.number == node.number {
-				relativeNodes.append((node: node, isStart: false))
+			guard let startNode = $0.startNode, let endNode = $0.endNode else { return }
+			if startNode.number == node.number {
+				relativeNodes.append((node: endNode, isStart: true))
+			} else if endNode.number == node.number {
+				relativeNodes.append((node: startNode, isStart: false))
 			}
 		})
 	}
@@ -220,8 +221,23 @@ class NodesCollectionViewController: UICollectionViewController {
 			cell.isEditing = self.isEditing
 			let isSelected = selectedIndexPath == indexPath && !isEditing
 			cell.arrowsDirections = isSelected ? relativeNodes.map({ $0.1 }) : []
-			cell.isSelected = isSelected			
-			cell.isPlaceholder = !self.isEditing && selectedIndexPath != nil && selectedIndexPath != indexPath
+			cell.isSelected = isSelected
+			
+			// Логика для определения отображения ячейки, как плейсхолдера
+			let isContainsInRelative = relativeNodes.contains(where: { $0.node.number == node.number })
+			let canBePlaceholder = !self.isEditing && selectedIndexPath != nil
+			
+			let isPlaceholder: Bool = {
+				if canBePlaceholder {
+					if isContainsInRelative || selectedIndexPath == indexPath {
+						return false
+					}
+					return true
+				}
+				return false
+			}()
+			
+			cell.isPlaceholder = isPlaceholder
 			
 			cell.delegate = self
 			return cell
