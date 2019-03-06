@@ -108,8 +108,12 @@ class NodeCollectionViewCell: UICollectionViewCell, MovableItem {
 		return lbl
 	}()
 	
-	private var arrows: [UIView] = []
-	var arrowsDirections: [Bool] = []
+	private var arrows: [Arrow] = []
+	var arrowsDirections: [Bool] = [] {
+		didSet {
+			arrows.update()
+		}
+	}
 	var isEditing: Bool = false {
 		didSet {
 			vBtnDeleteEffect.isHidden = !isEditing
@@ -133,6 +137,23 @@ class NodeCollectionViewCell: UICollectionViewCell, MovableItem {
 					self.vCell.transform = self.isMoving ? .init(scaleX: 1.1, y: 1.1) : .identity
 			},
 				completion: nil)
+		}
+	}
+	
+//	override var isSelected: Bool {
+//		didSet {
+//			updateArrows()
+//		}
+//	}
+	
+	// https://stackoverflow.com/questions/40116282/preventing-moving-uicollectionviewcell-by-its-center-when-dragging
+	override var isHighlighted: Bool {
+		didSet {
+			if isEditing {
+				UIView.animate(withDuration: 0.05) {
+					self.contentView.transform = self.isHighlighted ? .init(scaleX: 0.9, y: 0.9) : .identity
+				}
+			}
 		}
 	}
 	
@@ -193,23 +214,6 @@ class NodeCollectionViewCell: UICollectionViewCell, MovableItem {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	override var isSelected: Bool {
-		didSet {
-			updateArrows()
-		}
-	}
-	
-	// https://stackoverflow.com/questions/40116282/preventing-moving-uicollectionviewcell-by-its-center-when-dragging
-	override var isHighlighted: Bool {
-		didSet {
-			if isEditing {
-				UIView.animate(withDuration: 0.05) {
-					self.contentView.transform = self.isHighlighted ? .init(scaleX: 0.9, y: 0.9) : .identity
-				}
-			}
-		}
-	}
-	
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		
@@ -230,87 +234,56 @@ class NodeCollectionViewCell: UICollectionViewCell, MovableItem {
 		fill(number: node.number, x: node.x, y: node.y, z: node.z)
 	}
 	
-	private func updateArrows() {
-		arrows.enumerated().forEach({ index, view in
-			view.isHidden = !(arrowsDirections.count > index)
-			if isSelected {
-				rotateToCenter(view: view, at: index)
-				
-				if arrowsDirections.count > index, !arrowsDirections[index] {
-					view.transform = view.transform.rotated(by: .pi)
-				}
-			}
-		})
-	}
-	
-	private func rotateToCenter(view: UIView, at index: Int) {
-		let angle: CGFloat = {
-			switch index {
-			case 0: return .pi * 1.5
-			case 1: return .pi * 0.5
-			case 2: return .pi
-			case 3: return 0
-			case 4: return .pi * 1.25
-			case 5: return .pi * 1.75
-			case 6: return .pi * 0.75
-			case 7: return .pi * 0.25
-			default: return 0
-			}
-		}()
-		view.transform = CGAffineTransform(rotationAngle: angle)
-	}
+//	private func updateArrows() {
+//		arrows.enumerated().forEach({ index, view in
+//			view.isHidden = !(arrowsDirections.count > index)
+//			if isSelected {
+//				alignRotationToCenter(view: view, at: index)
+//
+//				if arrowsDirections.count > index, !arrowsDirections[index] {
+//					view.transform = view.transform.rotated(by: .pi)
+//				}
+//			}
+//		})
+//	}
 	
 	private func addArrows() {
-		func horizontalConstraint(for view: UIView, at index: Int) -> NSLayoutConstraint {
-			switch index {
-			case 4, 2, 6:
+		func horizontalConstraint(for view: UIView, with direction: Direction) -> NSLayoutConstraint {
+			switch direction {
+			case .northwest, .west, .southwest:
 				return view.centerXAnchor.constraint(equalTo: contentView.leadingAnchor)
-			case 0, 1:
+			case .north, .south:
 				return view.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-			case 5, 3, 7:
+			case .northeast, .east, .southeast:
 				return view.centerXAnchor.constraint(equalTo: contentView.trailingAnchor)
-			default:
-				return NSLayoutConstraint()
 			}
 		}
 		
-		func verticalConstraint(for view: UIView, at index: Int) -> NSLayoutConstraint {
-			switch index {
-			case 4, 0, 5:
+		func verticalConstraint(for view: UIView, with direction: Direction) -> NSLayoutConstraint {
+			switch direction {
+			case .northwest, .north, .northeast:
 				return view.centerYAnchor.constraint(equalTo: contentView.topAnchor)
-			case 2, 3:
+			case .west, .east:
 				return view.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-			case 6, 1, 7:
+			case .southwest, .south, .southeast:
 				return view.centerYAnchor.constraint(equalTo: contentView.bottomAnchor)
-			default:
-				return NSLayoutConstraint()
 			}
 		}
 		
 		arrows.forEach({ $0.removeFromSuperview() })
 		arrows = []
 		
-		let image = #imageLiteral(resourceName: "arrow")
-		let aspectRatio = image.size.width / image.size.height
-		
 		let arrowWidth = inset * 1.7
-		let size = CGSize(width: arrowWidth, height: arrowWidth / aspectRatio)
 		
-		(0..<8).forEach({
-			let imgArrow = UIImageView(image: image)
-			imgArrow.isHidden = true
-			imgArrow.translatesAutoresizingMaskIntoConstraints = false
-			imgArrow.tintColor = .red
-			
-			arrows.append(imgArrow)
-			contentView.addSubview(imgArrow)
-			
+		Direction.allCases.forEach({
+			let arrow = Arrow(direction: $0, width: arrowWidth)
+			arrow.isHidden = true
+			arrows.append(arrow)
+			contentView.addSubview(arrow)
+
 			NSLayoutConstraint.activate([
-				imgArrow.widthAnchor.constraint(equalToConstant: size.width),
-				imgArrow.heightAnchor.constraint(equalToConstant: size.height),
-				
-				horizontalConstraint(for: imgArrow, at: $0),
-				verticalConstraint(for: imgArrow, at: $0)
+				horizontalConstraint(for: arrow, with: $0),
+				verticalConstraint(for: arrow, with: $0)
 				])
 		})
 	}

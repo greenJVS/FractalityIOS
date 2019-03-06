@@ -130,6 +130,73 @@ class NodesCollectionViewController: UICollectionViewController {
 		})
 	}
 	
+	private func allowableDirections(for indexPath: IndexPath) {
+		let numberOfItemsInRow = flowLayout.numberOfItemsInRow
+		guard numberOfItemsInRow > 0 else {
+			print("Very thick view!")
+			return
+		}
+		
+		print("===== АНАЛИЗ УЗЛА \(indexPath.item) =====")
+		let indexInRow = indexPath.item % numberOfItemsInRow
+		
+		if indexInRow == 0 {
+			print("Ячейка первого столбца")
+			
+			// No west
+			// No northwest
+			// No soutwest
+		}
+		
+		if indexInRow == numberOfItemsInRow - 1 {
+			print("Ячейка последнего столбца")
+			
+			// No east
+			// No northeast
+			// No southeast
+		}
+		
+		if indexPath.item < numberOfItemsInRow {
+			print("Ячейка в первой строке")
+			
+			// No nortwest
+			// No north
+			// No norteast
+		}
+		
+		let numberOfFullRows = Int(Double(nodes.count) / Double(numberOfItemsInRow))
+		
+		// Количество узлов в последней строке
+		let numberOfItemsInLastRow = nodes.count % numberOfItemsInRow
+		
+		
+		if numberOfItemsInLastRow == 0 {
+			// Все строки заполненны полностью
+			if indexPath.item > nodes.count - numberOfItemsInRow {
+				print("Ячейка в последней строке")
+				
+				// No southwest
+				// No south
+				// No southeast
+			}
+		} else {
+			// Есть незаполненная строка
+			if indexPath.item >= nodes.count - numberOfItemsInLastRow {
+				print("Ячейка в последней незаполненной строке")
+				
+				// No southwest
+				// No south
+				// No southeast
+			} else if indexPath.item >= nodes.count - numberOfItemsInLastRow - numberOfItemsInRow {
+				print("Ячейка в последней заполненной строке")
+				
+				
+			}
+		}
+		
+		print()
+	}
+	
 	private func offsetOfTouchFrom(recognizer: UIGestureRecognizer, inCell cell: UICollectionViewCell) -> CGPoint {
 		
 		let locationOfTouchInCell = recognizer.location(in: cell)
@@ -214,14 +281,17 @@ class NodesCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		#warning("remove after tests")
+		allowableDirections(for: indexPath)
+		
 		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kNodeCVCellReuseIdentifier, for: indexPath) as? NodeCollectionViewCell {
 			let node = nodes[indexPath.row]
 			cell.fill(node: node)
 			
 			cell.isEditing = self.isEditing
 			let isSelected = selectedIndexPath == indexPath && !isEditing
-			cell.arrowsDirections = isSelected ? relativeNodes.map({ $0.1 }) : []
 			cell.isSelected = isSelected
+			cell.arrowsDirections = isSelected ? relativeNodes.map({ $0.1 }) : []
 			
 			// Логика для определения отображения ячейки, как плейсхолдера
 			let isContainsInRelative = relativeNodes.contains(where: { $0.node.number == node.number })

@@ -11,6 +11,17 @@ import UIKit
 class NodeCollectionViewFlowLayout: UICollectionViewFlowLayout {
 	
 	private let minimunAspectRatio: CGFloat = 1.5
+	private let itemHeight: CGFloat = 100
+	
+	private var viewWidth: CGFloat {
+		let contentInsets = collectionView?.contentInset ?? .zero
+		return (collectionView?.frame.width ?? 0.0) - contentInsets.left - contentInsets.right
+	}
+	
+	var numberOfItemsInRow: Int {
+		let numberOfItemsInRow: CGFloat = viewWidth / (itemHeight * minimunAspectRatio)
+		return Int(numberOfItemsInRow)
+	}
 	
 	override var minimumLineSpacing: CGFloat {
 		get {
@@ -32,13 +43,8 @@ class NodeCollectionViewFlowLayout: UICollectionViewFlowLayout {
 	
 	override var itemSize: CGSize {
 		get {
-			let height: CGFloat = 100
-			let contentInsets = collectionView?.contentInset ?? .zero
-			let viewWidth = (collectionView?.frame.width ?? 0.0) - contentInsets.left - contentInsets.right
-			let numberOfItemsInRow: CGFloat = viewWidth / (height * minimunAspectRatio)
-			let width = viewWidth / numberOfItemsInRow.rounded(.down)
-			
-			return CGSize(width: width, height: height)
+			let width = viewWidth / CGFloat(numberOfItemsInRow)
+			return CGSize(width: width, height: itemHeight)
 		}
 		set {
 			self.itemSize = newValue
