@@ -188,9 +188,24 @@ class NodesCollectionViewController: UICollectionViewController {
 				// No south
 				// No southeast
 			} else if indexPath.item >= nodes.count - numberOfItemsInLastRow - numberOfItemsInRow {
-				print("Ячейка в последней заполненной строке")
+				print("Ячейка в последней заполненной строке =>")
 				
-				
+				if indexInRow == numberOfItemsInLastRow - 1 {
+					print("Прямо надо последним узлом")
+					
+					// No southeast
+				} else if indexInRow == numberOfItemsInLastRow {
+					print("Следующая, после последнего")
+					
+					// No south
+					// No southeast
+				} else if indexInRow > numberOfItemsInLastRow {
+					print("Под ячейкой ничего нет")
+					
+					// No southwest
+					// No south
+					// No southeast
+				}
 			}
 		}
 		
