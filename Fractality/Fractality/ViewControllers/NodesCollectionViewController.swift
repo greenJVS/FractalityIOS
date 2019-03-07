@@ -130,86 +130,97 @@ class NodesCollectionViewController: UICollectionViewController {
 		})
 	}
 	
-	private func allowableDirections(for indexPath: IndexPath) {
+	private func possibleDirections(for indexPath: IndexPath) -> [Direction] {
 		let numberOfItemsInRow = flowLayout.numberOfItemsInRow
 		guard numberOfItemsInRow > 0 else {
 			print("Very thick view!")
-			return
+			return []
 		}
+		
+		var directionsDict: [Direction: Bool] = {
+			var dict: [Direction: Bool] = [:]
+			Direction.allCases.forEach({
+				dict[$0] = true
+			})
+			return dict
+		}()
 		
 		print("===== АНАЛИЗ УЗЛА \(indexPath.item) =====")
 		let indexInRow = indexPath.item % numberOfItemsInRow
 		
 		if indexInRow == 0 {
-			print("Ячейка первого столбца")
+			//print("Ячейка первого столбца")
 			
-			// No west
-			// No northwest
-			// No soutwest
+			directionsDict[.west] = false
+			directionsDict[.northwest] = false
+			directionsDict[.southwest] = false
 		}
 		
 		if indexInRow == numberOfItemsInRow - 1 {
-			print("Ячейка последнего столбца")
+			//print("Ячейка последнего столбца")
 			
-			// No east
-			// No northeast
-			// No southeast
+			directionsDict[.east] = false
+			directionsDict[.northeast] = false
+			directionsDict[.southeast] = false
 		}
 		
 		if indexPath.item < numberOfItemsInRow {
-			print("Ячейка в первой строке")
+			//print("Ячейка в первой строке")
 			
-			// No nortwest
-			// No north
-			// No norteast
+			directionsDict[.northwest] = false
+			directionsDict[.north] = false
+			directionsDict[.northeast] = false
 		}
-		
-		let numberOfFullRows = Int(Double(nodes.count) / Double(numberOfItemsInRow))
 		
 		// Количество узлов в последней строке
 		let numberOfItemsInLastRow = nodes.count % numberOfItemsInRow
 		
-		
-		if numberOfItemsInLastRow == 0 {
+		if numberOfItemsInLastRow == numberOfItemsInRow {
 			// Все строки заполненны полностью
 			if indexPath.item > nodes.count - numberOfItemsInRow {
-				print("Ячейка в последней строке")
+				//print("Ячейка в последней строке")
 				
-				// No southwest
-				// No south
-				// No southeast
+				directionsDict[.southwest] = false
+				directionsDict[.south] = false
+				directionsDict[.southeast] = false
 			}
 		} else {
 			// Есть незаполненная строка
 			if indexPath.item >= nodes.count - numberOfItemsInLastRow {
-				print("Ячейка в последней незаполненной строке")
+				//print("Ячейка в последней незаполненной строке")
 				
-				// No southwest
-				// No south
-				// No southeast
+				directionsDict[.southwest] = false
+				directionsDict[.south] = false
+				directionsDict[.southeast] = false
+				
+				if indexPath.item == nodes.count - 1 {
+					//print("Последняя ячейка")
+					
+					directionsDict[.east] = false
+				}
 			} else if indexPath.item >= nodes.count - numberOfItemsInLastRow - numberOfItemsInRow {
-				print("Ячейка в последней заполненной строке =>")
+				//print("Ячейка в последней заполненной строке")
 				
 				if indexInRow == numberOfItemsInLastRow - 1 {
-					print("Прямо надо последним узлом")
+					//print("    ...прямо над последним узлом")
 					
-					// No southeast
+					directionsDict[.southeast] = false
 				} else if indexInRow == numberOfItemsInLastRow {
-					print("Следующая, после последнего")
+					//print("    ...следующая, после последнего")
 					
-					// No south
-					// No southeast
+					directionsDict[.south] = false
+					directionsDict[.southwest] = false
 				} else if indexInRow > numberOfItemsInLastRow {
-					print("Под ячейкой ничего нет")
+					//print("    ...под ячейкой ничего нет")
 					
-					// No southwest
-					// No south
-					// No southeast
+					directionsDict[.southwest] = false
+					directionsDict[.south] = false
+					directionsDict[.southeast] = false
 				}
 			}
 		}
 		
-		print()
+		return directionsDict.filter({ $0.value }).map({ $0.key	})
 	}
 	
 	private func offsetOfTouchFrom(recognizer: UIGestureRecognizer, inCell cell: UICollectionViewCell) -> CGPoint {
@@ -297,7 +308,7 @@ class NodesCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		#warning("remove after tests")
-		allowableDirections(for: indexPath)
+		print("Возможные указатели: \(possibleDirections(for: indexPath).map({ "\($0)".split(separator: ".").last ?? ""}))")
 		
 		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kNodeCVCellReuseIdentifier, for: indexPath) as? NodeCollectionViewCell {
 			let node = nodes[indexPath.row]
