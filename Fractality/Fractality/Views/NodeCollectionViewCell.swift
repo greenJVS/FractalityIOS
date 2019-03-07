@@ -108,10 +108,51 @@ class NodeCollectionViewCell: UICollectionViewCell, MovableItem {
 		return lbl
 	}()
 	
+	//	private func updateArrows() {
+	//		arrows.enumerated().forEach({ index, view in
+	//			view.isHidden = !(arrowsDirections.count > index)
+	//			if isSelected {
+	//				alignRotationToCenter(view: view, at: index)
+	//
+	//				if arrowsDirections.count > index, !arrowsDirections[index] {
+	//					view.transform = view.transform.rotated(by: .pi)
+	//				}
+	//			}
+	//		})
+	//	}
+	
 	private var arrows: [Arrow] = []
-	var arrowsDirections: [Bool] = [] {
+	var arrowsState: ([Orientation], [Direction]) = ([], []) {
 		didSet {
-			arrows.update()
+//			arrows.update()
+			
+			let orientations = arrowsState.0
+			let directions = arrowsState.1
+			
+			if isSelected {
+				print("Node \(lblNumber.text!) \t\t max:\(directions.count) \t\t need: \(orientations.count)")
+			}
+			
+			var shownArrowCount = 0
+			arrows.forEach({ arrow in
+				
+				guard orientations.count > shownArrowCount, isSelected else {
+					arrow.isHidden = true
+					return
+				}
+				
+				let isValidDirection = directions.contains(arrow.direction)
+				arrow.isHidden = !isValidDirection
+				
+				if isValidDirection {
+					arrow.orientation = orientations[shownArrowCount]
+					arrow.type = .rule
+					
+					shownArrowCount += 1
+					arrow.update()
+				}
+				
+			})
 		}
 	}
 	var isEditing: Bool = false {
@@ -233,19 +274,6 @@ class NodeCollectionViewCell: UICollectionViewCell, MovableItem {
 	public func fill(node: Node) {
 		fill(number: node.number, x: node.x, y: node.y, z: node.z)
 	}
-	
-//	private func updateArrows() {
-//		arrows.enumerated().forEach({ index, view in
-//			view.isHidden = !(arrowsDirections.count > index)
-//			if isSelected {
-//				alignRotationToCenter(view: view, at: index)
-//
-//				if arrowsDirections.count > index, !arrowsDirections[index] {
-//					view.transform = view.transform.rotated(by: .pi)
-//				}
-//			}
-//		})
-//	}
 	
 	private func addArrows() {
 		func horizontalConstraint(for view: UIView, with direction: Direction) -> NSLayoutConstraint {

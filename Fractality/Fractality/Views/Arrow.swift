@@ -51,7 +51,10 @@ class Arrow: UIImageView, Updatable {
 		self.direction = direction
 		self.width = width
 		let image = #imageLiteral(resourceName: "arrow")
+		
 		super.init(image: image)
+		
+		translatesAutoresizingMaskIntoConstraints = false
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

@@ -27,7 +27,7 @@ class NodesCollectionViewController: UICollectionViewController {
 	}
 	
 	private var nodes: [Node] = []
-	private var relativeNodes: [(node: Node, isStart: Bool)] = []
+	private var relativeNodes: [(node: Node, orientation: Orientation)] = []
 	private var beams: [Beam] = []
 	
 	private lazy var barBtnAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barBtnAdd_Tapped(_:)))
@@ -123,9 +123,9 @@ class NodesCollectionViewController: UICollectionViewController {
 		beams.forEach({
 			guard let startNode = $0.startNode, let endNode = $0.endNode else { return }
 			if startNode.number == node.number {
-				relativeNodes.append((node: endNode, isStart: true))
+				relativeNodes.append((node: endNode, orientation: .outcoming))
 			} else if endNode.number == node.number {
-				relativeNodes.append((node: startNode, isStart: false))
+				relativeNodes.append((node: startNode, orientation: .incoming))
 			}
 		})
 	}
@@ -145,7 +145,7 @@ class NodesCollectionViewController: UICollectionViewController {
 			return dict
 		}()
 		
-		print("===== АНАЛИЗ УЗЛА \(indexPath.item) =====")
+		// print("===== АНАЛИЗ УЗЛА \(indexPath.item) =====")
 		let indexInRow = indexPath.item % numberOfItemsInRow
 		
 		if indexInRow == 0 {
@@ -175,9 +175,9 @@ class NodesCollectionViewController: UICollectionViewController {
 		// Количество узлов в последней строке
 		let numberOfItemsInLastRow = nodes.count % numberOfItemsInRow
 		
-		if numberOfItemsInLastRow == numberOfItemsInRow {
+		if numberOfItemsInLastRow == 0 {
 			// Все строки заполненны полностью
-			if indexPath.item > nodes.count - numberOfItemsInRow {
+			if indexPath.item >= nodes.count - numberOfItemsInRow {
 				//print("Ячейка в последней строке")
 				
 				directionsDict[.southwest] = false
@@ -295,9 +295,12 @@ class NodesCollectionViewController: UICollectionViewController {
 		print("WTF! gesture state \(gestureRecognizer.state.rawValue)")
 		collectionView.reloadData()
 	}
-	
-    // MARK: - UICollectionViewDataSource
+}
 
+// MARK: - UICollectionViewDataSource
+
+extension NodesCollectionViewController {
+	
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -307,8 +310,8 @@ class NodesCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		#warning("remove after tests")
-		print("Возможные указатели: \(possibleDirections(for: indexPath).map({ "\($0)".split(separator: ".").last ?? ""}))")
+//		#warning("remove after tests")
+//		print("\(indexPath.row) указатели: \(possibleDirections(for: indexPath).map({ "\($0)".split(separator: ".").last ?? ""}))")
 		
 		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kNodeCVCellReuseIdentifier, for: indexPath) as? NodeCollectionViewCell {
 			let node = nodes[indexPath.row]
@@ -317,7 +320,10 @@ class NodesCollectionViewController: UICollectionViewController {
 			cell.isEditing = self.isEditing
 			let isSelected = selectedIndexPath == indexPath && !isEditing
 			cell.isSelected = isSelected
-			cell.arrowsDirections = isSelected ? relativeNodes.map({ $0.1 }) : []
+			
+			let possibleArrowsDirections = possibleDirections(for: indexPath)
+			let arrowsState = (relativeNodes.map({ $0.orientation }), possibleArrowsDirections)
+			cell.arrowsState = isSelected ? arrowsState : ([], [])
 			
 			// Логика для определения отображения ячейки, как плейсхолдера
 			let isContainsInRelative = relativeNodes.contains(where: { $0.node.number == node.number })
@@ -360,8 +366,12 @@ class NodesCollectionViewController: UICollectionViewController {
 		collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
 	}
 	
-    // MARK: - UICollectionViewDelegate
+}
 
+// MARK: - UICollectionViewDelegate
+
+extension NodesCollectionViewController {
+	
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
