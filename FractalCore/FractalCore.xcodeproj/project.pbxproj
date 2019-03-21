@@ -10,6 +10,8 @@
 		84DDB10A2244057400979CB1 /* FractalCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DDB1002244057400979CB1 /* FractalCore.framework */; };
 		84DDB10F2244057400979CB1 /* FractalCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB10E2244057400979CB1 /* FractalCoreTests.swift */; };
 		84DDB1112244057400979CB1 /* FractalCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 84DDB1032244057400979CB1 /* FractalCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84DDB11E2244114100979CB1 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB11D2244114100979CB1 /* Point.swift */; };
+		84DDB1212244123000979CB1 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB1202244123000979CB1 /* Vector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		84DDB1092244057400979CB1 /* FractalCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FractalCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DDB10E2244057400979CB1 /* FractalCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalCoreTests.swift; sourceTree = "<group>"; };
 		84DDB1102244057400979CB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84DDB11D2244114100979CB1 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		84DDB1202244123000979CB1 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 		84DDB1022244057400979CB1 /* FractalCore */ = {
 			isa = PBXGroup;
 			children = (
+				84DDB11F224411FA00979CB1 /* Maths */,
+				84DDB11A2244071000979CB1 /* Models */,
 				84DDB1032244057400979CB1 /* FractalCore.h */,
 				84DDB1042244057400979CB1 /* Info.plist */,
 			);
@@ -84,6 +90,22 @@
 				84DDB1102244057400979CB1 /* Info.plist */,
 			);
 			path = FractalCoreTests;
+			sourceTree = "<group>";
+		};
+		84DDB11A2244071000979CB1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		84DDB11F224411FA00979CB1 /* Maths */ = {
+			isa = PBXGroup;
+			children = (
+				84DDB11D2244114100979CB1 /* Point.swift */,
+				84DDB1202244123000979CB1 /* Vector.swift */,
+			);
+			path = Maths;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +170,7 @@
 				TargetAttributes = {
 					84DDB0FF2244057400979CB1 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 					84DDB1082244057400979CB1 = {
 						CreatedOnToolsVersion = 10.2;
@@ -194,6 +217,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DDB11E2244114100979CB1 /* Point.swift in Sources */,
+				84DDB1212244123000979CB1 /* Vector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +366,7 @@
 		84DDB1152244057400979CB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +384,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = GreenJVS.FractalCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +393,7 @@
 		84DDB1162244057400979CB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +419,7 @@
 		84DDB1182244057400979CB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6UA8C23LK;
 				INFOPLIST_FILE = FractalCoreTests/Info.plist;
@@ -409,6 +438,7 @@
 		84DDB1192244057400979CB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6UA8C23LK;
 				INFOPLIST_FILE = FractalCoreTests/Info.plist;
