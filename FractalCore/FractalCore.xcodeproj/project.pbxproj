@@ -16,6 +16,7 @@
 		84DDB125224422E600979CB1 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB11D2244114100979CB1 /* Point.swift */; };
 		84DDB1272244261500979CB1 /* VectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB1262244261500979CB1 /* VectorTests.swift */; };
 		84DDB1282244261E00979CB1 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB1202244123000979CB1 /* Vector.swift */; };
+		84DDB12A22443A0A00979CB1 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB12922443A0A00979CB1 /* Matrix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		84DDB1202244123000979CB1 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		84DDB12322441E7C00979CB1 /* PointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointTests.swift; sourceTree = "<group>"; };
 		84DDB1262244261500979CB1 /* VectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorTests.swift; sourceTree = "<group>"; };
+		84DDB12922443A0A00979CB1 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			children = (
 				84DDB11D2244114100979CB1 /* Point.swift */,
 				84DDB1202244123000979CB1 /* Vector.swift */,
+				84DDB12922443A0A00979CB1 /* Matrix.swift */,
 			);
 			path = Maths;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			files = (
 				84DDB11E2244114100979CB1 /* Point.swift in Sources */,
 				84DDB1212244123000979CB1 /* Vector.swift in Sources */,
+				84DDB12A22443A0A00979CB1 /* Matrix.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
