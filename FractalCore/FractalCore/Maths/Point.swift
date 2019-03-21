@@ -9,9 +9,9 @@
 /// Point structure with 3 coordinates.
 struct Point {
 	
-	var x: Double
-	var y: Double
-	var z: Double
+	let x: Double
+	let y: Double
+	let z: Double
 	
 	/// Returns a point based on specified coordinates
 	///

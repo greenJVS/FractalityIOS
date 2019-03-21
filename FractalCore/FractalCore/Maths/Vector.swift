@@ -6,6 +6,8 @@
 //  Copyright © 2019 GreenJVS. All rights reserved.
 //
 
+import Foundation
+
 /// Vector structure with 3 coordinates.
 struct Vector {
 	
@@ -15,7 +17,9 @@ struct Vector {
 	
 	/// Returns the length of the vector.
 	var length: Double {
-		return sqrt(x * x + y * y + z * z)
+		let length = sqrt(x * x + y * y + z * z)
+		let divisor = pow(10.0, Double(15))
+		return (length * divisor).rounded() / divisor
 	}
 	
 	/// Returns a vector based on specified coordinates
@@ -78,7 +82,7 @@ struct Vector {
 		z *= value
 	}
 	
-	/// Returns an orthogonal vector oriented by the principle of the right coordinate system.
+	/// Returns an normalized orthogonal vector oriented by the principle of the right coordinate system.
 	///
 	/// - Returns: Orthogonal vector.
 	func orthogonalVector() -> Vector {
@@ -88,9 +92,9 @@ struct Vector {
 		
 		if orthogonalVector.length == 0 {
 			let x = z < 0 ? -1.0 : 1.0
-			return Vector(x: x, y: 0, z: 0)
+			return Vector(x: x, y: 0, z: 0).normalized()!
 		}
 		
-		return orthogonalVector
+		return orthogonalVector.normalized()!
 	}
 }
