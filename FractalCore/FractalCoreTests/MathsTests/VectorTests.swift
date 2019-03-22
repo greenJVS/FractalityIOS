@@ -97,7 +97,7 @@ class VectorTests: XCTestCase {
 		let zeroVector = Vector()
 		let nonZeroVector = Vector(x: -5, y: -1, z: 12)
 		
-		let productVector = Vector.product(zeroVector, with: nonZeroVector)
+		let productVector = zeroVector.producted(with: nonZeroVector)//Vector.product(zeroVector, with: nonZeroVector)
 		
 		XCTAssertEqual(productVector.length, 0)
 	}
@@ -107,14 +107,14 @@ class VectorTests: XCTestCase {
 		let yVector = Vector(x: 0, y: 1, z: 0)
 		let zVector = Vector(x: 0, y: 0, z: 1)
 		
-		let xyVector = Vector.product(xVector, with: yVector)
-		let yxVector = Vector.product(yVector, with: xVector)
+		let xyVector = xVector.producted(with: yVector)
+		let yxVector = yVector.producted(with: xVector)
 		
-		let yzVector = Vector.product(yVector, with: zVector)
-		let zyVector = Vector.product(zVector, with: yVector)
+		let yzVector = yVector.producted(with: zVector)
+		let zyVector = zVector.producted(with: yVector)
 		
-		let zxVector = Vector.product(zVector, with: xVector)
-		let xzVector = Vector.product(xVector, with: zVector)
+		let zxVector = zVector.producted(with: xVector)
+		let xzVector = xVector.producted(with: zVector)
 		
 		// Vector lengths
 		XCTAssertEqual(xyVector.length, 1)

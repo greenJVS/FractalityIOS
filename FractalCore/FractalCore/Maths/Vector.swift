@@ -45,17 +45,14 @@ struct Vector {
 		z = endPoint.z - startPoint.z
 	}
 	
-	/// Vector product.
-	/// The order of multiplication matters!
+	/// Returns a new vector obtained by a product with a given vector.
 	///
-	/// - Parameters:
-	///   - firstVector: First vector.
-	///   - secondVector: Second vector.
+	/// - Parameter vector: Vector for product.
 	/// - Returns: Vector product.
-	static func product(_ firstVector: Vector, with secondVector: Vector) -> Vector {
-		let x = firstVector.y * secondVector.z - firstVector.z * secondVector.y
-		let y = firstVector.z * secondVector.x - firstVector.x * secondVector.z
-		let z = firstVector.x * secondVector.y - firstVector.y * secondVector.x
+	func producted(with vector: Vector) -> Vector {
+		let x = self.y * vector.z - self.z * vector.y
+		let y = self.z * vector.x - self.x * vector.z
+		let z = self.x * vector.y - self.y * vector.x
 		
 		return Vector(x: x, y: y, z: z)
 	}
@@ -88,7 +85,7 @@ struct Vector {
 	func orthogonalVector() -> Vector {
 		
 		let zVector = Vector(x: 0, y: 0, z: 1)
-		let orthogonalVector = Vector.product(zVector, with: self)
+		let orthogonalVector = zVector.producted(with: self)
 		
 		if orthogonalVector.length == 0 {
 			let x = z < 0 ? -1.0 : 1.0
