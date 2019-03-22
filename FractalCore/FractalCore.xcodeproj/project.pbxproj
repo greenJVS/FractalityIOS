@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8484274522456C5F003D18E3 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB12922443A0A00979CB1 /* Matrix.swift */; };
+		8484274722456C8D003D18E3 /* MatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484274622456C8D003D18E3 /* MatrixTests.swift */; };
 		84DDB10A2244057400979CB1 /* FractalCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DDB1002244057400979CB1 /* FractalCore.framework */; };
 		84DDB10F2244057400979CB1 /* FractalCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB10E2244057400979CB1 /* FractalCoreTests.swift */; };
 		84DDB1112244057400979CB1 /* FractalCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 84DDB1032244057400979CB1 /* FractalCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8484274622456C8D003D18E3 /* MatrixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixTests.swift; sourceTree = "<group>"; };
 		84DDB1002244057400979CB1 /* FractalCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FractalCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DDB1032244057400979CB1 /* FractalCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FractalCore.h; sourceTree = "<group>"; };
 		84DDB1042244057400979CB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 			children = (
 				84DDB12322441E7C00979CB1 /* PointTests.swift */,
 				84DDB1262244261500979CB1 /* VectorTests.swift */,
+				8484274622456C8D003D18E3 /* MatrixTests.swift */,
 			);
 			path = MathsTests;
 			sourceTree = "<group>";
@@ -247,7 +251,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84DDB12422441E7C00979CB1 /* PointTests.swift in Sources */,
+				8484274722456C8D003D18E3 /* MatrixTests.swift in Sources */,
 				84DDB10F2244057400979CB1 /* FractalCoreTests.swift in Sources */,
+				8484274522456C5F003D18E3 /* Matrix.swift in Sources */,
 				84DDB1282244261E00979CB1 /* Vector.swift in Sources */,
 				84DDB1272244261500979CB1 /* VectorTests.swift in Sources */,
 				84DDB125224422E600979CB1 /* Point.swift in Sources */,
