@@ -11,9 +11,7 @@ import Foundation
 /// Vector structure with 3 coordinates.
 struct Vector {
 	
-	var x: Double
-	var y: Double
-	var z: Double
+	var x, y, z: Double
 	
 	/// Returns the length of the vector.
 	var length: Double {
