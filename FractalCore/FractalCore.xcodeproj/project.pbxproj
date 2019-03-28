@@ -20,6 +20,8 @@
 		84DDB1272244261500979CB1 /* VectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB1262244261500979CB1 /* VectorTests.swift */; };
 		84DDB1282244261E00979CB1 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB1202244123000979CB1 /* Vector.swift */; };
 		84DDB12A22443A0A00979CB1 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDB12922443A0A00979CB1 /* Matrix.swift */; };
+		84FE62A4224D389F0030A5CD /* CoordinateSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62A3224D389F0030A5CD /* CoordinateSystemTests.swift */; };
+		84FE62A5224D38F70030A5CD /* CoordinateSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484274822459083003D18E3 /* CoordinateSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,7 @@
 		84DDB12322441E7C00979CB1 /* PointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointTests.swift; sourceTree = "<group>"; };
 		84DDB1262244261500979CB1 /* VectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorTests.swift; sourceTree = "<group>"; };
 		84DDB12922443A0A00979CB1 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		84FE62A3224D389F0030A5CD /* CoordinateSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSystemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,7 @@
 				84DDB12322441E7C00979CB1 /* PointTests.swift */,
 				84DDB1262244261500979CB1 /* VectorTests.swift */,
 				8484274622456C8D003D18E3 /* MatrixTests.swift */,
+				84FE62A3224D389F0030A5CD /* CoordinateSystemTests.swift */,
 			);
 			path = MathsTests;
 			sourceTree = "<group>";
@@ -256,10 +260,12 @@
 			files = (
 				84DDB12422441E7C00979CB1 /* PointTests.swift in Sources */,
 				8484274722456C8D003D18E3 /* MatrixTests.swift in Sources */,
+				84FE62A5224D38F70030A5CD /* CoordinateSystem.swift in Sources */,
 				84DDB10F2244057400979CB1 /* FractalCoreTests.swift in Sources */,
 				8484274522456C5F003D18E3 /* Matrix.swift in Sources */,
 				84DDB1282244261E00979CB1 /* Vector.swift in Sources */,
 				84DDB1272244261500979CB1 /* VectorTests.swift in Sources */,
+				84FE62A4224D389F0030A5CD /* CoordinateSystemTests.swift in Sources */,
 				84DDB125224422E600979CB1 /* Point.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,7 +23,7 @@ struct CoordinateSystem {
 		self.basis3 = basis3
 	}
 	
-	func transitionMatrix(toCoordinateSystem coordinateSystem: CoordinateSystem) -> Matrix2D? {
+	func transitionMatrix(to coordinateSystem: CoordinateSystem) -> Matrix2D? {
 		var mG = Matrix2D(rows: 3, columns: 3)!
 		mG[0][0] = basis1.x
 		mG[1][0] = basis1.y

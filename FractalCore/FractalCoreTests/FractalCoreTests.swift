@@ -10,6 +10,7 @@ import XCTest
 @testable import FractalCore
 
 class FractalCoreTests: XCTestCase {
+	/*
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -31,4 +32,5 @@ class FractalCoreTests: XCTestCase {
         }
     }
 
+	*/
 }
