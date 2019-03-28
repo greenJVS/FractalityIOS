@@ -31,6 +31,7 @@
 		84FE62B3224D5B9F0030A5CD /* IterationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62B2224D5B9F0030A5CD /* IterationRule.swift */; };
 		84FE62B4224D60540030A5CD /* IterationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62B2224D5B9F0030A5CD /* IterationRule.swift */; };
 		84FE62B6224D60680030A5CD /* IterationRuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62B5224D60680030A5CD /* IterationRuleTests.swift */; };
+		84FE62B8224D63800030A5CD /* Fractal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62B7224D63800030A5CD /* Fractal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		84FE62AF224D59B00030A5CD /* BeamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamTests.swift; sourceTree = "<group>"; };
 		84FE62B2224D5B9F0030A5CD /* IterationRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterationRule.swift; sourceTree = "<group>"; };
 		84FE62B5224D60680030A5CD /* IterationRuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterationRuleTests.swift; sourceTree = "<group>"; };
+		84FE62B7224D63800030A5CD /* Fractal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fractal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +110,7 @@
 			children = (
 				84FE62A6224D4AA30030A5CD /* DataModels */,
 				84DDB11F224411FA00979CB1 /* Maths */,
-				84DDB11A2244071000979CB1 /* Models */,
+				84FE62B7224D63800030A5CD /* Fractal.swift */,
 				84DDB1032244057400979CB1 /* FractalCore.h */,
 				84DDB1042244057400979CB1 /* Info.plist */,
 			);
@@ -124,13 +126,6 @@
 				84DDB1102244057400979CB1 /* Info.plist */,
 			);
 			path = FractalCoreTests;
-			sourceTree = "<group>";
-		};
-		84DDB11A2244071000979CB1 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		84DDB11F224411FA00979CB1 /* Maths */ = {
@@ -289,6 +284,7 @@
 				84FE62AE224D581F0030A5CD /* Beam.swift in Sources */,
 				84DDB1212244123000979CB1 /* Vector.swift in Sources */,
 				8484274922459083003D18E3 /* CoordinateSystem.swift in Sources */,
+				84FE62B8224D63800030A5CD /* Fractal.swift in Sources */,
 				84FE62B3224D5B9F0030A5CD /* IterationRule.swift in Sources */,
 				84DDB12A22443A0A00979CB1 /* Matrix.swift in Sources */,
 			);
