@@ -14,6 +14,14 @@ struct CoordinateSystem {
 	let basis1, basis2, basis3: Vector
 	let origin: Point
 	
+	/// Returns a default Global Coordinate System.
+	init() {
+		self.origin = Point()
+		self.basis1 = Vector(x: 1, y: 0, z: 0)
+		self.basis2 = Vector(x: 0, y: 1, z: 0)
+		self.basis3 = Vector(x: 0, y: 0, z: 1)
+	}
+	
 	/// Returns a Coordinate System based on three basises and origin.
 	///
 	/// - Parameters:
@@ -21,10 +29,10 @@ struct CoordinateSystem {
 	///   - basis1: First Basis vector.
 	///   - basis2: Second Basis vector.
 	///   - basis3: Third Basis vector.
-	init(origin: Point = Point(),
-		 basis1: Vector = Vector(),
-		 basis2: Vector = Vector(),
-		 basis3: Vector = Vector()) {
+	init(origin: Point,
+		 basis1: Vector,
+		 basis2: Vector,
+		 basis3: Vector) {
 		self.origin = origin
 		self.basis1 = basis1
 		self.basis2 = basis2

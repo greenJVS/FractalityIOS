@@ -31,17 +31,17 @@ extension CoordinateSystemTests {
 		XCTAssertEqual(zeroCoordinateSystem.origin.y, 0)
 		XCTAssertEqual(zeroCoordinateSystem.origin.z, 0)
 		
-		XCTAssertEqual(zeroCoordinateSystem.basis1.x, 0)
+		XCTAssertEqual(zeroCoordinateSystem.basis1.x, 1)
 		XCTAssertEqual(zeroCoordinateSystem.basis1.y, 0)
 		XCTAssertEqual(zeroCoordinateSystem.basis1.z, 0)
 		
 		XCTAssertEqual(zeroCoordinateSystem.basis2.x, 0)
-		XCTAssertEqual(zeroCoordinateSystem.basis2.y, 0)
+		XCTAssertEqual(zeroCoordinateSystem.basis2.y, 1)
 		XCTAssertEqual(zeroCoordinateSystem.basis2.z, 0)
 		
 		XCTAssertEqual(zeroCoordinateSystem.basis3.x, 0)
 		XCTAssertEqual(zeroCoordinateSystem.basis3.y, 0)
-		XCTAssertEqual(zeroCoordinateSystem.basis3.z, 0)
+		XCTAssertEqual(zeroCoordinateSystem.basis3.z, 1)
 	}
 	
 	func testCoordinateSystem_Initialization_CustomArgs() {
@@ -81,7 +81,12 @@ extension CoordinateSystemTests {
 extension CoordinateSystemTests {
 	
 	func testCoordinateSystem_TransitionMatrix_WrongInput() {
-		let zeroCoordinateSystem = CoordinateSystem()
+		let zeroCoordinateSystem = CoordinateSystem(
+			origin: Point(),
+			basis1: Vector(),
+			basis2: Vector(),
+			basis3: Vector()
+		)
 		
 		let origin = Point(x: 1, y: 2, z: -5)
 		let basis1 = Vector(x: 7, y: -1, z: 0.5)
