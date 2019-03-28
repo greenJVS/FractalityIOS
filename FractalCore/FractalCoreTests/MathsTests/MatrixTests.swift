@@ -195,4 +195,16 @@ extension MatrixTests {
 		XCTAssertEqual(inversedMatrix![1][1], 1)
 	}
 	
+	func testMatrix_Inversion_ZeroMatrix() {
+		let rowA1: Matrix1D = [0, 0]
+		let rowA2: Matrix1D = [0, 0]
+		var matrixA = Matrix2D(rows: 2, columns: 2)!
+		matrixA[0] = rowA1
+		matrixA[1] = rowA2
+		
+		let inversedMatrix = matrixA.inversed()
+		
+		XCTAssertNil(inversedMatrix)
+	}
+	
 }
