@@ -28,6 +28,9 @@
 		84FE62AE224D581F0030A5CD /* Beam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62AD224D581F0030A5CD /* Beam.swift */; };
 		84FE62B0224D59B00030A5CD /* BeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62AF224D59B00030A5CD /* BeamTests.swift */; };
 		84FE62B1224D59B40030A5CD /* Beam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62AD224D581F0030A5CD /* Beam.swift */; };
+		84FE62B3224D5B9F0030A5CD /* IterationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62B2224D5B9F0030A5CD /* IterationRule.swift */; };
+		84FE62B4224D60540030A5CD /* IterationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62B2224D5B9F0030A5CD /* IterationRule.swift */; };
+		84FE62B6224D60680030A5CD /* IterationRuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62B5224D60680030A5CD /* IterationRuleTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,8 @@
 		84FE62AA224D55B40030A5CD /* NodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTests.swift; sourceTree = "<group>"; };
 		84FE62AD224D581F0030A5CD /* Beam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beam.swift; sourceTree = "<group>"; };
 		84FE62AF224D59B00030A5CD /* BeamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamTests.swift; sourceTree = "<group>"; };
+		84FE62B2224D5B9F0030A5CD /* IterationRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterationRule.swift; sourceTree = "<group>"; };
+		84FE62B5224D60680030A5CD /* IterationRuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterationRuleTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +160,7 @@
 			children = (
 				84FE62A7224D4B1A0030A5CD /* Node.swift */,
 				84FE62AD224D581F0030A5CD /* Beam.swift */,
+				84FE62B2224D5B9F0030A5CD /* IterationRule.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -164,6 +170,7 @@
 			children = (
 				84FE62AA224D55B40030A5CD /* NodeTests.swift */,
 				84FE62AF224D59B00030A5CD /* BeamTests.swift */,
+				84FE62B5224D60680030A5CD /* IterationRuleTests.swift */,
 			);
 			path = DataModelsTests;
 			sourceTree = "<group>";
@@ -282,6 +289,7 @@
 				84FE62AE224D581F0030A5CD /* Beam.swift in Sources */,
 				84DDB1212244123000979CB1 /* Vector.swift in Sources */,
 				8484274922459083003D18E3 /* CoordinateSystem.swift in Sources */,
+				84FE62B3224D5B9F0030A5CD /* IterationRule.swift in Sources */,
 				84DDB12A22443A0A00979CB1 /* Matrix.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,9 +303,11 @@
 				84FE62B0224D59B00030A5CD /* BeamTests.swift in Sources */,
 				8484274722456C8D003D18E3 /* MatrixTests.swift in Sources */,
 				84FE62AC224D55BA0030A5CD /* Node.swift in Sources */,
+				84FE62B4224D60540030A5CD /* IterationRule.swift in Sources */,
 				84FE62A5224D38F70030A5CD /* CoordinateSystem.swift in Sources */,
 				84DDB10F2244057400979CB1 /* FractalCoreTests.swift in Sources */,
 				8484274522456C5F003D18E3 /* Matrix.swift in Sources */,
+				84FE62B6224D60680030A5CD /* IterationRuleTests.swift in Sources */,
 				84DDB1282244261E00979CB1 /* Vector.swift in Sources */,
 				84DDB1272244261500979CB1 /* VectorTests.swift in Sources */,
 				84FE62B1224D59B40030A5CD /* Beam.swift in Sources */,
