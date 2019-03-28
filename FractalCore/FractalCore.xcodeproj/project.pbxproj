@@ -25,6 +25,9 @@
 		84FE62A8224D4B1A0030A5CD /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62A7224D4B1A0030A5CD /* Node.swift */; };
 		84FE62AB224D55B40030A5CD /* NodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62AA224D55B40030A5CD /* NodeTests.swift */; };
 		84FE62AC224D55BA0030A5CD /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62A7224D4B1A0030A5CD /* Node.swift */; };
+		84FE62AE224D581F0030A5CD /* Beam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62AD224D581F0030A5CD /* Beam.swift */; };
+		84FE62B0224D59B00030A5CD /* BeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62AF224D59B00030A5CD /* BeamTests.swift */; };
+		84FE62B1224D59B40030A5CD /* Beam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE62AD224D581F0030A5CD /* Beam.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,8 @@
 		84FE62A3224D389F0030A5CD /* CoordinateSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSystemTests.swift; sourceTree = "<group>"; };
 		84FE62A7224D4B1A0030A5CD /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		84FE62AA224D55B40030A5CD /* NodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTests.swift; sourceTree = "<group>"; };
+		84FE62AD224D581F0030A5CD /* Beam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beam.swift; sourceTree = "<group>"; };
+		84FE62AF224D59B00030A5CD /* BeamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				84FE62A7224D4B1A0030A5CD /* Node.swift */,
+				84FE62AD224D581F0030A5CD /* Beam.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -157,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				84FE62AA224D55B40030A5CD /* NodeTests.swift */,
+				84FE62AF224D59B00030A5CD /* BeamTests.swift */,
 			);
 			path = DataModelsTests;
 			sourceTree = "<group>";
@@ -272,6 +279,7 @@
 			files = (
 				84DDB11E2244114100979CB1 /* Point.swift in Sources */,
 				84FE62A8224D4B1A0030A5CD /* Node.swift in Sources */,
+				84FE62AE224D581F0030A5CD /* Beam.swift in Sources */,
 				84DDB1212244123000979CB1 /* Vector.swift in Sources */,
 				8484274922459083003D18E3 /* CoordinateSystem.swift in Sources */,
 				84DDB12A22443A0A00979CB1 /* Matrix.swift in Sources */,
@@ -284,6 +292,7 @@
 			files = (
 				84DDB12422441E7C00979CB1 /* PointTests.swift in Sources */,
 				84FE62AB224D55B40030A5CD /* NodeTests.swift in Sources */,
+				84FE62B0224D59B00030A5CD /* BeamTests.swift in Sources */,
 				8484274722456C8D003D18E3 /* MatrixTests.swift in Sources */,
 				84FE62AC224D55BA0030A5CD /* Node.swift in Sources */,
 				84FE62A5224D38F70030A5CD /* CoordinateSystem.swift in Sources */,
@@ -291,6 +300,7 @@
 				8484274522456C5F003D18E3 /* Matrix.swift in Sources */,
 				84DDB1282244261E00979CB1 /* Vector.swift in Sources */,
 				84DDB1272244261500979CB1 /* VectorTests.swift in Sources */,
+				84FE62B1224D59B40030A5CD /* Beam.swift in Sources */,
 				84FE62A4224D389F0030A5CD /* CoordinateSystemTests.swift in Sources */,
 				84DDB125224422E600979CB1 /* Point.swift in Sources */,
 			);
