@@ -21,7 +21,7 @@ class Node {
 		self.point = point
 	}
 	
-	/// Returns a new Node with added amoount of the point to each coordinate.
+	/// Returns a new Node with added amount of the point to each coordinate.
 	///
 	/// - Parameter point: The Point to shift coordinates.
 	/// - Returns: Shifted Node.
