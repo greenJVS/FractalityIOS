@@ -8,11 +8,19 @@
 
 import Foundation
 
+/// Coordinate System with three basises vectors and origin point.
 struct CoordinateSystem {
 	
 	let basis1, basis2, basis3: Vector
 	let origin: Point
 	
+	/// Returns a Coordinate System based on three basises and origin.
+	///
+	/// - Parameters:
+	///   - origin: Origin Point.
+	///   - basis1: First Basis vector.
+	///   - basis2: Second Basis vector.
+	///   - basis3: Third Basis vector.
 	init(origin: Point = Point(),
 		 basis1: Vector = Vector(),
 		 basis2: Vector = Vector(),
@@ -23,6 +31,10 @@ struct CoordinateSystem {
 		self.basis3 = basis3
 	}
 	
+	/// Returns a transition matrix to specified coordinate system.
+	///
+	/// - Parameter coordinateSystem: Target coordinate system.
+	/// - Returns: Transition Matrix.
 	func transitionMatrix(to coordinateSystem: CoordinateSystem) -> Matrix2D? {
 		var mG = Matrix2D(rows: 3, columns: 3)!
 		mG[0][0] = basis1.x
