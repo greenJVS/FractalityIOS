@@ -16,11 +16,17 @@ class Fractal {
 	var axiomBeam: Beam? = nil
 	var iterationRule: IterationRule? = nil
 	
+	/// Returns a Fractal.
 	init() {
 		self.nodes = []
 		self.beams = []
 	}
 	
+	/// Returns a zero-iteration Fractal based on given Axiom Beam and Iteration Rule.
+	///
+	/// - Parameters:
+	///   - axiom: Axiom Beam.
+	///   - rule: Iteration Rule.
 	init(axiom: Beam, rule: IterationRule) {
 		self.axiomBeam = axiom
 		self.iterationRule = rule
@@ -31,6 +37,7 @@ class Fractal {
 		initialize()
 	}
 	
+	/// Reset computed data and restore initial state of Fractal.
 	func initialize() {
 		self.nodes = []
 		self.beams = []
@@ -59,6 +66,9 @@ class Fractal {
 		beams.append(beam)
 	}
 	
+	/// Recursively iterates a fractal to a specified iteration.
+	///
+	/// - Parameter iteration: Target iteration.
 	func iterate(to iteration: Int) {
 		guard iteration > 0 else { return }
 		guard let iterationRule = iterationRule else { return }
@@ -116,8 +126,8 @@ class Fractal {
 				}
 				
 				for beam in iterationRule.beams {
-					let startNodeIndex = beam[0]
-					let endNodeIndex = beam[1]
+					let startNodeIndex = beam[0] - 1
+					let endNodeIndex = beam[1] - 1
 					let isIterable = beam[2] == 1 ? true : false
 					
 					let newBeam = Beam(
