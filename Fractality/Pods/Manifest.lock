@@ -1,0 +1,16 @@
+PODS:
+  - FractalCore (1.0.0)
+
+DEPENDENCIES:
+  - FractalCore (from `/Users/admin/Documents/Projects/Fractality/FractalCore`)
+
+EXTERNAL SOURCES:
+  FractalCore:
+    :path: "/Users/admin/Documents/Projects/Fractality/FractalCore"
+
+SPEC CHECKSUMS:
+  FractalCore: afb5355d8f1922a9a1bcd807fa0c2df0c1f2466d
+
+PODFILE CHECKSUM: 204491a166f6d2527b0e507f1a07b7ffd4a6cd83
+
+COCOAPODS: 1.6.2

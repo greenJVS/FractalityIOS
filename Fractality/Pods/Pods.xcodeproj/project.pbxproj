@@ -1,0 +1,661 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		037D631C563C5F5F843698681EC41B9D /* Pods-Fractality-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 47319B763CDC9AF81E2CDAE9B11B7468 /* Pods-Fractality-dummy.m */; };
+		051D5ABE7E9B232EBB52EF7FE1F2AF46 /* FractalCore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A24DAF6156FDAEA089BF573E3B7BEDD /* FractalCore-dummy.m */; };
+		27BBA156CC011B6EB45A3C69B48F6204 /* FractalCore-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3706C9B3583CA3E617835BF6EC004836 /* FractalCore-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31B0E66C4337C33B3975F46AF55E5A5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		468E222D35CA257DD3D57B0D740719E6 /* Pods-Fractality-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A6F51F7DD782733516982ED6471FBDA0 /* Pods-Fractality-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5CEC0BA00F885C47A44B9CD981437D09 /* Fractal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902823E465130973444D217E984A622D /* Fractal.swift */; };
+		6F97F265607BC4061F2EFCE4E8DC0601 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2162DAC781D365D7A5D82329C62D5796 /* Node.swift */; };
+		76C70014B000493FBAA0C4BC1784878B /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A603CE7A74736A02FEFB4C62D9F825 /* Vector.swift */; };
+		9528C9E7F9755E1F2E2B9889E8037DD3 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C620973C9B787CA114973644421B585 /* Point.swift */; };
+		B34B4553AD586F474FD6979B96DFBE66 /* Beam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14299B5F90E30F879772E9CA7F5DA4E /* Beam.swift */; };
+		B718ED0DD52D06BC92C9FD89386B7184 /* CoordinateSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007C51C98C0B34DE4790AA2E5F7003F3 /* CoordinateSystem.swift */; };
+		BC8EFCC1D118AA40E21F87309DD29520 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCEE275F43F91835BD0B4E1D7E66A7C /* Matrix.swift */; };
+		BCCB6FB3A2337F66C4BFF3EA5DBDF2ED /* IterationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3476CECADE1EA1BA7AA01A2ADBC0A8 /* IterationRule.swift */; };
+		FA56B495503BE496A21E7DC29F1E22BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6401BA61A0D2C5F71ECC4138D5B2B363 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0ECB83AA1E7436D6CA72A4C5FFDF69F3;
+			remoteInfo = FractalCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		007C51C98C0B34DE4790AA2E5F7003F3 /* CoordinateSystem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoordinateSystem.swift; sourceTree = "<group>"; };
+		0297AA4CC5A28F104D2EB91FBB5655F4 /* Pods-Fractality-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Fractality-Info.plist"; sourceTree = "<group>"; };
+		0892C24D4908425CE3D7B5F0F8C99FE3 /* Pods-Fractality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Fractality.debug.xcconfig"; sourceTree = "<group>"; };
+		1A24DAF6156FDAEA089BF573E3B7BEDD /* FractalCore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FractalCore-dummy.m"; sourceTree = "<group>"; };
+		2162DAC781D365D7A5D82329C62D5796 /* Node.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		31F75E8721CAEDF14EC0343CD510B3BA /* FractalCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FractalCore.framework; path = FractalCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		368BA21D03E90D53B615AD912036AF26 /* Pods-Fractality.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Fractality.release.xcconfig"; sourceTree = "<group>"; };
+		3706C9B3583CA3E617835BF6EC004836 /* FractalCore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FractalCore-umbrella.h"; sourceTree = "<group>"; };
+		45EE695B0D6DE43F337F9F994E4A4FB5 /* Pods-Fractality-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Fractality-frameworks.sh"; sourceTree = "<group>"; };
+		47319B763CDC9AF81E2CDAE9B11B7468 /* Pods-Fractality-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Fractality-dummy.m"; sourceTree = "<group>"; };
+		4A3476CECADE1EA1BA7AA01A2ADBC0A8 /* IterationRule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IterationRule.swift; sourceTree = "<group>"; };
+		5370B0C6B1EFB5738E22AAD5E68F4550 /* Pods-Fractality.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Fractality.modulemap"; sourceTree = "<group>"; };
+		5C620973C9B787CA114973644421B585 /* Point.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		5DCEE275F43F91835BD0B4E1D7E66A7C /* Matrix.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		688766F4C58CFA8EBF52019074F18417 /* FractalCore.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = FractalCore.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		902823E465130973444D217E984A622D /* Fractal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Fractal.swift; path = FractalCore/Source/Fractal.swift; sourceTree = "<group>"; };
+		9714127717C8E7020101F0A4A41DE419 /* FractalCore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FractalCore.modulemap; sourceTree = "<group>"; };
+		98A603CE7A74736A02FEFB4C62D9F825 /* Vector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A6F51F7DD782733516982ED6471FBDA0 /* Pods-Fractality-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Fractality-umbrella.h"; sourceTree = "<group>"; };
+		A937BF8E676F7F7A02210ED8B293D3FC /* Pods-Fractality-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Fractality-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AF5571023B08B0022AEDC9615E841B4C /* FractalCore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FractalCore.xcconfig; sourceTree = "<group>"; };
+		B6731DDF7894A44E09D95D7BCAA84077 /* Pods_Fractality.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Fractality.framework; path = "Pods-Fractality.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D46C57CDF76E093055F313FD5EA52F1B /* Pods-Fractality-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Fractality-acknowledgements.plist"; sourceTree = "<group>"; };
+		DD2BEFB66BDA7916B2DBBD9DB9DC002C /* FractalCore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FractalCore-prefix.pch"; sourceTree = "<group>"; };
+		F14299B5F90E30F879772E9CA7F5DA4E /* Beam.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Beam.swift; sourceTree = "<group>"; };
+		FA60479B3E66499A3326088996C8CDFA /* FractalCore-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FractalCore-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAD549F22FC736A308ABD8A435ACFE9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31B0E66C4337C33B3975F46AF55E5A5D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7D2E5B9DE2E2AFE02798AD1FF39767B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA56B495503BE496A21E7DC29F1E22BB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0597F1D6A7987BC285F160FF5E6CBB12 /* FractalCore */ = {
+			isa = PBXGroup;
+			children = (
+				902823E465130973444D217E984A622D /* Fractal.swift */,
+				1EDB1EDE38EFCEB608C9D49E2C855F52 /* DataModels */,
+				65653040E44BB95C64F1A032E32EAA28 /* Maths */,
+				C2618E374CC7B6EAA253476BAB955CBF /* Pod */,
+				D9053F63C989E6621473FC5DC89AC01B /* Support Files */,
+			);
+			name = FractalCore;
+			path = /Users/admin/Documents/Projects/Fractality/FractalCore;
+			sourceTree = "<absolute>";
+		};
+		1EDB1EDE38EFCEB608C9D49E2C855F52 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				F14299B5F90E30F879772E9CA7F5DA4E /* Beam.swift */,
+				4A3476CECADE1EA1BA7AA01A2ADBC0A8 /* IterationRule.swift */,
+				2162DAC781D365D7A5D82329C62D5796 /* Node.swift */,
+			);
+			name = DataModels;
+			path = FractalCore/Source/DataModels;
+			sourceTree = "<group>";
+		};
+		380A30AC1810EF0DA793CAE8BAF84B77 /* Pods-Fractality */ = {
+			isa = PBXGroup;
+			children = (
+				5370B0C6B1EFB5738E22AAD5E68F4550 /* Pods-Fractality.modulemap */,
+				A937BF8E676F7F7A02210ED8B293D3FC /* Pods-Fractality-acknowledgements.markdown */,
+				D46C57CDF76E093055F313FD5EA52F1B /* Pods-Fractality-acknowledgements.plist */,
+				47319B763CDC9AF81E2CDAE9B11B7468 /* Pods-Fractality-dummy.m */,
+				45EE695B0D6DE43F337F9F994E4A4FB5 /* Pods-Fractality-frameworks.sh */,
+				0297AA4CC5A28F104D2EB91FBB5655F4 /* Pods-Fractality-Info.plist */,
+				A6F51F7DD782733516982ED6471FBDA0 /* Pods-Fractality-umbrella.h */,
+				0892C24D4908425CE3D7B5F0F8C99FE3 /* Pods-Fractality.debug.xcconfig */,
+				368BA21D03E90D53B615AD912036AF26 /* Pods-Fractality.release.xcconfig */,
+			);
+			name = "Pods-Fractality";
+			path = "Target Support Files/Pods-Fractality";
+			sourceTree = "<group>";
+		};
+		65653040E44BB95C64F1A032E32EAA28 /* Maths */ = {
+			isa = PBXGroup;
+			children = (
+				007C51C98C0B34DE4790AA2E5F7003F3 /* CoordinateSystem.swift */,
+				5DCEE275F43F91835BD0B4E1D7E66A7C /* Matrix.swift */,
+				5C620973C9B787CA114973644421B585 /* Point.swift */,
+				98A603CE7A74736A02FEFB4C62D9F825 /* Vector.swift */,
+			);
+			name = Maths;
+			path = FractalCore/Source/Maths;
+			sourceTree = "<group>";
+		};
+		65E6AE66DA6842CB79E4FA5579A1CF99 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0597F1D6A7987BC285F160FF5E6CBB12 /* FractalCore */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		94BA27B6E174D8AE6B9BBE4AF9EEB242 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				380A30AC1810EF0DA793CAE8BAF84B77 /* Pods-Fractality */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		A124D17C428CFB11D9B59226F370B9FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				31F75E8721CAEDF14EC0343CD510B3BA /* FractalCore.framework */,
+				B6731DDF7894A44E09D95D7BCAA84077 /* Pods_Fractality.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C2618E374CC7B6EAA253476BAB955CBF /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				688766F4C58CFA8EBF52019074F18417 /* FractalCore.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				65E6AE66DA6842CB79E4FA5579A1CF99 /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				A124D17C428CFB11D9B59226F370B9FE /* Products */,
+				94BA27B6E174D8AE6B9BBE4AF9EEB242 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D9053F63C989E6621473FC5DC89AC01B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9714127717C8E7020101F0A4A41DE419 /* FractalCore.modulemap */,
+				AF5571023B08B0022AEDC9615E841B4C /* FractalCore.xcconfig */,
+				1A24DAF6156FDAEA089BF573E3B7BEDD /* FractalCore-dummy.m */,
+				FA60479B3E66499A3326088996C8CDFA /* FractalCore-Info.plist */,
+				DD2BEFB66BDA7916B2DBBD9DB9DC002C /* FractalCore-prefix.pch */,
+				3706C9B3583CA3E617835BF6EC004836 /* FractalCore-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Fractality/Pods/Target Support Files/FractalCore";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		092096DF4EDA6A8533525B8E5E766317 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				468E222D35CA257DD3D57B0D740719E6 /* Pods-Fractality-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E24C56A82288FB8DD6D17FE6EC5CB51F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27BBA156CC011B6EB45A3C69B48F6204 /* FractalCore-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0ECB83AA1E7436D6CA72A4C5FFDF69F3 /* FractalCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 580BC84115AF4FBF67564F1C39D2D5D1 /* Build configuration list for PBXNativeTarget "FractalCore" */;
+			buildPhases = (
+				E24C56A82288FB8DD6D17FE6EC5CB51F /* Headers */,
+				56FBC67B838B475401E00F8AA4AC3ED4 /* Sources */,
+				AAD549F22FC736A308ABD8A435ACFE9A /* Frameworks */,
+				F84B4C939C170A135329744401F887EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FractalCore;
+			productName = FractalCore;
+			productReference = 31F75E8721CAEDF14EC0343CD510B3BA /* FractalCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EF2721408A1555E0FD82067743E712AC /* Pods-Fractality */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5ADDC19BB6A8C7C293358C7FA738561F /* Build configuration list for PBXNativeTarget "Pods-Fractality" */;
+			buildPhases = (
+				092096DF4EDA6A8533525B8E5E766317 /* Headers */,
+				F5AEEF5553EC7219C73EB858991F9F0F /* Sources */,
+				C7D2E5B9DE2E2AFE02798AD1FF39767B /* Frameworks */,
+				458275C11E2140A59C96F44854F2FD89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3719A1A529E5E6C78EE1BA706E5389CC /* PBXTargetDependency */,
+			);
+			name = "Pods-Fractality";
+			productName = "Pods-Fractality";
+			productReference = B6731DDF7894A44E09D95D7BCAA84077 /* Pods_Fractality.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = A124D17C428CFB11D9B59226F370B9FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0ECB83AA1E7436D6CA72A4C5FFDF69F3 /* FractalCore */,
+				EF2721408A1555E0FD82067743E712AC /* Pods-Fractality */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		458275C11E2140A59C96F44854F2FD89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F84B4C939C170A135329744401F887EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		56FBC67B838B475401E00F8AA4AC3ED4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B34B4553AD586F474FD6979B96DFBE66 /* Beam.swift in Sources */,
+				B718ED0DD52D06BC92C9FD89386B7184 /* CoordinateSystem.swift in Sources */,
+				5CEC0BA00F885C47A44B9CD981437D09 /* Fractal.swift in Sources */,
+				051D5ABE7E9B232EBB52EF7FE1F2AF46 /* FractalCore-dummy.m in Sources */,
+				BCCB6FB3A2337F66C4BFF3EA5DBDF2ED /* IterationRule.swift in Sources */,
+				BC8EFCC1D118AA40E21F87309DD29520 /* Matrix.swift in Sources */,
+				6F97F265607BC4061F2EFCE4E8DC0601 /* Node.swift in Sources */,
+				9528C9E7F9755E1F2E2B9889E8037DD3 /* Point.swift in Sources */,
+				76C70014B000493FBAA0C4BC1784878B /* Vector.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5AEEF5553EC7219C73EB858991F9F0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				037D631C563C5F5F843698681EC41B9D /* Pods-Fractality-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3719A1A529E5E6C78EE1BA706E5389CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FractalCore;
+			target = 0ECB83AA1E7436D6CA72A4C5FFDF69F3 /* FractalCore */;
+			targetProxy = 6401BA61A0D2C5F71ECC4138D5B2B363 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0C910693F8EFFBE7790D31136EB373A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF5571023B08B0022AEDC9615E841B4C /* FractalCore.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FractalCore/FractalCore-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FractalCore/FractalCore-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FractalCore/FractalCore.modulemap";
+				PRODUCT_MODULE_NAME = FractalCore;
+				PRODUCT_NAME = FractalCore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4CE281642D6EE9FAB113046B4B6328A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		4D3CAA74A01768AE54F0883E59E18B11 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 368BA21D03E90D53B615AD912036AF26 /* Pods-Fractality.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Fractality/Pods-Fractality-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Fractality/Pods-Fractality.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6DFA1578582149B7E24AD55CBA30F07A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		B2448E665D7F39DE12927C93F7A5D6A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0892C24D4908425CE3D7B5F0F8C99FE3 /* Pods-Fractality.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Fractality/Pods-Fractality-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Fractality/Pods-Fractality.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C369A2C4D7B82D341FE21A1EA6600174 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF5571023B08B0022AEDC9615E841B4C /* FractalCore.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FractalCore/FractalCore-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FractalCore/FractalCore-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FractalCore/FractalCore.modulemap";
+				PRODUCT_MODULE_NAME = FractalCore;
+				PRODUCT_NAME = FractalCore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DFA1578582149B7E24AD55CBA30F07A /* Debug */,
+				4CE281642D6EE9FAB113046B4B6328A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		580BC84115AF4FBF67564F1C39D2D5D1 /* Build configuration list for PBXNativeTarget "FractalCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C369A2C4D7B82D341FE21A1EA6600174 /* Debug */,
+				0C910693F8EFFBE7790D31136EB373A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5ADDC19BB6A8C7C293358C7FA738561F /* Build configuration list for PBXNativeTarget "Pods-Fractality" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2448E665D7F39DE12927C93F7A5D6A1 /* Debug */,
+				4D3CAA74A01768AE54F0883E59E18B11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "FractalCore",
+  "version": "1.0.0",
+  "summary": "Math core of Fractality.",
+  "description": "Fractal Core pod. This must be used as math core.",
+  "homepage": "https://github.com/greenJVS",
+  "license": "MIT",
+  "authors": {
+    "greenJVS": "green.jvs@gmail.com"
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source": {
+    "path": "."
+  },
+  "source_files": "FractalCore/**/*.swift",
+  "swift_version": "5.0"
+}

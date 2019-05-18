@@ -1,0 +1,6 @@
+framework module Pods_Fractality {
+  umbrella header "Pods-Fractality-umbrella.h"
+
+  export *
+  module * { export * }
+}
