@@ -90,6 +90,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840B20312290433300BEC0D4 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				84FE62A6224D4AA30030A5CD /* DataModels */,
+				84DDB11F224411FA00979CB1 /* Maths */,
+				84FE62B7224D63800030A5CD /* Fractal.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		84DDB0F62244057400979CB1 = {
 			isa = PBXGroup;
 			children = (
@@ -111,9 +121,7 @@
 		84DDB1022244057400979CB1 /* FractalCore */ = {
 			isa = PBXGroup;
 			children = (
-				84FE62A6224D4AA30030A5CD /* DataModels */,
-				84DDB11F224411FA00979CB1 /* Maths */,
-				84FE62B7224D63800030A5CD /* Fractal.swift */,
+				840B20312290433300BEC0D4 /* Source */,
 				84DDB1032244057400979CB1 /* FractalCore.h */,
 				84DDB1042244057400979CB1 /* Info.plist */,
 			);
@@ -464,6 +472,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FractalCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,6 +500,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FractalCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

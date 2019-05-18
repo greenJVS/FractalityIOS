@@ -24,21 +24,18 @@ class IterationRuleTests: XCTestCase {
 
 extension IterationRuleTests {
 	
-	func testIterationRule_Initialization_WrongInput() {
-		let iterationRule = IterationRule(relativeVectors: [], beams: [[0], [1, 2], [1, 2, 3]])
-		
-		XCTAssertNil(iterationRule)
-	}
-	
 	func testIterationRule_Initialization_RightInput() {
 		let iterationRule = IterationRule(
 			relativeVectors: [Vector(), Vector()],
-			beams: [[0, 1, 2], [1, 2, 5], [1, 2, 3]]
+			beams: [
+			IterationRule.Beam(startNode: 0, endNode: 1, isIterable: true),
+			IterationRule.Beam(startNode: 1, endNode: 2, isIterable: true),
+			IterationRule.Beam(startNode: 1, endNode: 2, isIterable: true)
+			]
 		)
 		
-		XCTAssertNotNil(iterationRule)
-		XCTAssertEqual(iterationRule?.relativeVectors.count, 2)
-		XCTAssertEqual(iterationRule?.beams.count, 3)
+		XCTAssertEqual(iterationRule.relativeVectors.count, 2)
+		XCTAssertEqual(iterationRule.beams.count, 3)
 	}
 	
 }

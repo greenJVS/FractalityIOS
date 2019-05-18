@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Fractal {
+public class Fractal {
 	
 	var nodes: [Node]
 	var beams: [Beam]
@@ -126,9 +126,9 @@ class Fractal {
 				}
 				
 				for beam in iterationRule.beams {
-					let startNodeIndex = beam[0] - 1
-					let endNodeIndex = beam[1] - 1
-					let isIterable = beam[2] == 1 ? true : false
+					let startNodeIndex = beam.startNode - 1
+					let endNodeIndex = beam.endNode - 1
+					let isIterable = beam.isIterable
 					
 					let newBeam = Beam(
 						startNode: newNodes[startNodeIndex],

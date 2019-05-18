@@ -44,13 +44,13 @@ extension FractalTests {
 			Vector(x: 3, y: 2, z: 3)
 		]
 		
-		let ruleBeams = [
-			[0, 2, 1],
-			[1, 2, 1],
-			[2, 3, 1],
-			[3, 0, 1]
+		let ruleBeams: [IterationRule.Beam] = [
+			.init(startNode: 0, endNode: 2, isIterable: true),
+			.init(startNode: 1, endNode: 2, isIterable: true),
+			.init(startNode: 2, endNode: 3, isIterable: true),
+			.init(startNode: 3, endNode: 0, isIterable: true)
 		]
-		let iterationRule = IterationRule(relativeVectors: vectors, beams: ruleBeams)!
+		let iterationRule = IterationRule(relativeVectors: vectors, beams: ruleBeams)
 		
 		let fractal = Fractal(axiom: beam, rule: iterationRule)
 		
@@ -85,13 +85,13 @@ extension FractalTests {
 			Vector(x: 3, y: 2, z: 3)
 		]
 		
-		let ruleBeams = [
-			[0, 2, 1],
-			[1, 2, 1],
-			[2, 3, 1],
-			[3, 0, 1]
+		let ruleBeams: [IterationRule.Beam] = [
+			.init(startNode: 0, endNode: 2, isIterable: true),
+			.init(startNode: 1, endNode: 2, isIterable: true),
+			.init(startNode: 2, endNode: 3, isIterable: true),
+			.init(startNode: 3, endNode: 0, isIterable: true)
 		]
-		let iterationRule = IterationRule(relativeVectors: vectors, beams: ruleBeams)!
+		let iterationRule = IterationRule(relativeVectors: vectors, beams: ruleBeams)
 		
 		let fractal = Fractal()
 		fractal.axiomBeam = beam
@@ -115,13 +115,13 @@ extension FractalTests {
 			Vector(x: 3, y: 2, z: 3)
 		]
 		
-		let ruleBeams = [
-			[0, 2, 1],
-			[1, 2, 1],
-			[2, 3, 1],
-			[3, 0, 1]
+		let ruleBeams: [IterationRule.Beam] = [
+			.init(startNode: 0, endNode: 2, isIterable: true),
+			.init(startNode: 1, endNode: 2, isIterable: true),
+			.init(startNode: 2, endNode: 3, isIterable: true),
+			.init(startNode: 3, endNode: 0, isIterable: true)
 		]
-		let iterationRule = IterationRule(relativeVectors: vectors, beams: ruleBeams)!
+		let iterationRule = IterationRule(relativeVectors: vectors, beams: ruleBeams)
 		
 		let fractal = Fractal()
 		fractal.axiomBeam = beam
@@ -174,17 +174,16 @@ extension FractalTests {
 			relativeVectors.append(currentVector)
 		}
 		
-		var ruleBeams: [[Int]] = []
+		var ruleBeams: [IterationRule.Beam] = []
 		for beam in initalFractal.beams {
 			let startNodeNumber = beam.startNode!.number
 			let endNodeNumber = beam.endNode!.number
-			let isIterable = beam.isIterable ? 1 : 0
+			let isIterable = beam.isIterable
 			
-			let ruleBeam = [startNodeNumber, endNodeNumber, isIterable]
-			ruleBeams.append(ruleBeam)
+			ruleBeams.append(.init(startNode: startNodeNumber, endNode: endNodeNumber, isIterable: isIterable))
 		}
 		
-		let iterationRule = IterationRule(relativeVectors: relativeVectors, beams: ruleBeams)!
+		let iterationRule = IterationRule(relativeVectors: relativeVectors, beams: ruleBeams)
 		
 		let fNodeStart = Node(point: Point(x: 0, y: 0, z: 0))
 		let fNodeEnd = Node(point: Point(x: 1, y: 0, z: 0))
