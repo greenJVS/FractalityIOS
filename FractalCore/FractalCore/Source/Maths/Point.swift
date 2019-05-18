@@ -7,7 +7,7 @@
 //
 
 /// Point structure with 3 coordinates.
-struct Point {
+public struct Point {
 	
 	let x, y, z: Double
 	

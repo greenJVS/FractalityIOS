@@ -9,7 +9,7 @@
 import Foundation
 
 /// Vector structure with 3 coordinates.
-struct Vector {
+public struct Vector {
 	
 	var x, y, z: Double
 	

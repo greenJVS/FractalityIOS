@@ -9,7 +9,7 @@
 import Foundation
 
 /// Beam with Start Node, End Node and isIterable property.
-class Beam {
+public class Beam {
 	
 	var startNode, endNode: Node?
 	/// Flag for the need for iteration

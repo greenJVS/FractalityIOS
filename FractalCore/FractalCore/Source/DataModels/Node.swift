@@ -9,7 +9,7 @@
 import Foundation
 
 /// Node with Point and Number.
-class Node {
+public class Node {
 	
 	let point: Point
 	var number: Int = 0
